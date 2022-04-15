@@ -15,10 +15,11 @@ export const COLORS = {
 export const FONTS = {
   inconsolata: 'Inconsolata', // 300;400;700
   manrope: 'Manrope', // 300;400;600
-  notoSansJP: 'Noto+Sans+JP', // 300;400;700
+  notoSansJP: 'Noto Sans JP', // 300;400;700
   questrial: 'Questrial',
-  secularOne: 'Secular+One',
-  vazirmatn: 'Vazirmatn' // 100;400;700,
+  secularOne: 'Secular One',
+  vazirmatn: 'Vazirmatn', // 100;400;700,
+  vast: 'Vast Shadow',
 }
 
 export const COMMON = {

@@ -39,6 +39,9 @@ export const StyledSectionTitle = styled.h3`
   color: ${COMMON.primary};
   font-family: ${FONTS.manrope};
   font-weight: bold;
+  svg {
+    margin-right: 12px;
+  }
 `;
 
 export const StyledP = styled.p`

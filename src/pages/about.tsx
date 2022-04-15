@@ -1,4 +1,14 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faPeopleGroup,
+  faLaptopCode,
+  faCalendarDays,
+  faGraduationCap,
+  faPaw,
+  faPassport,
+  faFlagUsa,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   StyledP,
   StyledPage,
@@ -8,6 +18,7 @@ import {
   StyledSection,
   StyledSectionTitle,
 } from './styles';
+import { COMMON } from '../constants';
 
 export const About: React.FC = () => {
   return (
@@ -19,7 +30,14 @@ export const About: React.FC = () => {
         </StyledPageSubtitle>
       </StyledPageTitleContainer>
       <StyledSection>
-        <StyledSectionTitle>Leader</StyledSectionTitle>
+        <StyledSectionTitle>
+          <FontAwesomeIcon
+            icon={faPeopleGroup}
+            size="2x"
+            color={COMMON.primary}
+          />
+          Leader
+        </StyledSectionTitle>
         <StyledP>
           I currently manage a team of engineers, and love every minute of it.
           Management is so different from engineering and requires such a wide
@@ -30,7 +48,14 @@ export const About: React.FC = () => {
         </StyledP>
       </StyledSection>
       <StyledSection>
-        <StyledSectionTitle>Engineer</StyledSectionTitle>
+        <StyledSectionTitle>
+          <FontAwesomeIcon
+            icon={faLaptopCode}
+            size="2x"
+            color={COMMON.primary}
+          />
+          Engineer
+        </StyledSectionTitle>
         <StyledP>
           In my dev time, I help design and implement beautiful, responsive,
           accessible UIs. My main focus is always on the end user and UX is
@@ -45,7 +70,14 @@ export const About: React.FC = () => {
         </StyledP>
       </StyledSection>
       <StyledSection>
-        <StyledSectionTitle>Organiser</StyledSectionTitle>
+        <StyledSectionTitle>
+          <FontAwesomeIcon
+            icon={faCalendarDays}
+            size="2x"
+            color={COMMON.primary}
+          />
+          Organiser
+        </StyledSectionTitle>
         <StyledP>
           I tend to find myself at the centre of things and quite enjoy
           organising everything from team lunches to office socials. I've also
@@ -54,7 +86,14 @@ export const About: React.FC = () => {
         </StyledP>
       </StyledSection>
       <StyledSection>
-        <StyledSectionTitle>Forever Student</StyledSectionTitle>
+        <StyledSectionTitle>
+          <FontAwesomeIcon
+            icon={faGraduationCap}
+            size="2x"
+            color={COMMON.primary}
+          />
+          Forever Student
+        </StyledSectionTitle>
         <StyledP>
           I went to 3 universities before finally getting my degree, but being
           an engineer means you're never not a "student". One thing I enjoy
@@ -64,7 +103,10 @@ export const About: React.FC = () => {
         </StyledP>
       </StyledSection>
       <StyledSection>
-        <StyledSectionTitle>Dog mom</StyledSectionTitle>
+        <StyledSectionTitle>
+          <FontAwesomeIcon icon={faPaw} size="2x" color={COMMON.primary} />
+          Dog mom
+        </StyledSectionTitle>
         <StyledP>
           I have two huge dogs who I love more than anything. They keep me sane
           and are my reason for getting outdoors. Even though it was my
@@ -73,7 +115,10 @@ export const About: React.FC = () => {
         </StyledP>
       </StyledSection>
       <StyledSection>
-        <StyledSectionTitle>Travel Enthusiast</StyledSectionTitle>
+        <StyledSectionTitle>
+          <FontAwesomeIcon icon={faPassport} size="2x" color={COMMON.primary} />
+          Travel Enthusiast
+        </StyledSectionTitle>
         <StyledP>
           Even though travelling has been on hold during the pandemic, I still
           think about it constantly and am always planning one trip or another.
@@ -82,7 +127,10 @@ export const About: React.FC = () => {
         </StyledP>
       </StyledSection>
       <StyledSection>
-        <StyledSectionTitle>Expat</StyledSectionTitle>
+        <StyledSectionTitle>
+          <FontAwesomeIcon icon={faFlagUsa} size="2x" color={COMMON.primary} />
+          Expat
+        </StyledSectionTitle>
         <StyledP>
           I'm originally from Nashville, Tennessee. I moved to Wales to attend
           Cardiff University, and was lucky enough to find a job that would
