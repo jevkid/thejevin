@@ -9,8 +9,10 @@ const StyledHomeContent = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  position: relative;
   height: 600px;
+  @media (min-width: 811px) {
+    position: relative;
+  }
 `;
 
 const StyledHomeContainer = styled.div`
@@ -19,9 +21,15 @@ const StyledHomeContainer = styled.div`
   align-items: center;
   margin: 0;
   position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  @media (min-width: 811px) {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @media (max-width: 812px) {
+    top: 10%;
+  }
 `;
 
 const StyledHeadingTitle = styled.h1`
@@ -43,10 +51,18 @@ const StyledWorkContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 30px 0;
+  @media (max-width: 812px) {
+    flex-direction: column;
+    padding: 22px;
+  }
 `;
 
 const StyledWorkField = styled.div`
   width: 30%;
+  @media (max-width: 812px) {
+    padding: 6px 0;
+    width: 100%;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
@@ -59,7 +75,7 @@ export const Home: React.FC = () => {
       <StyledHomeContainer>
         <StyledHeadingTitle>Megan Jevin</StyledHeadingTitle>
         <StyledHeadingSubtitle>
-          Team Lead / Senior Frontend Engineer
+          Team Lead / Frontend Engineer
         </StyledHeadingSubtitle>
         <StyledWorkContainer>
           <StyledWorkField>

@@ -4,12 +4,19 @@ import { COMMON, FONTS } from '../constants';
 export const StyledPage = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 812px) {
+    position: absolute;
+    top: 10%;
+    padding: 22px;
+  }
 `;
 
 export const StyledPageTitleContainer = styled.h2`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  @media (min-width: 812px) {
+    align-items: center;
+  }
 `;
 
 export const StyledPageTitle = styled.h2`

@@ -4,7 +4,12 @@ export const COLORS = {
   offWhite: '#F9F4EF',
   navy: '#011B68',
   orange: '#FF9367',
-  pink: '#F4A8FF'
+  pink: '#F4A8FF',
+  // new
+  nude: '#F1E5E4',
+  blue: '#7C99FD',
+  neon: '#FF6B34',
+  turquoise: '#1EC4CA'
 };
 
 export const FONTS = {
