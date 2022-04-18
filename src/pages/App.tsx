@@ -1,67 +1,17 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode } from '@fortawesome/free-solid-svg-icons';
-import { APP_PADDING, COLORS, COMMON, FONTS } from './constants';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Portfolio } from './pages/portfolio';
-import { Home } from './pages/home';
-import { About } from './pages/about';
-import { Contact } from './pages/contact';
+import { COLORS } from '../constants';
+import { Title } from './title';
 import { motion } from 'framer-motion';
+import { BrowserRouter } from 'react-router-dom';
+import { AboutMe } from './aboutMe';
+import { MyWork } from './myWork';
+import { ContactMe } from './contactMe';
 
 interface StyledBurgerMenuProps {
   open?: boolean;
   hidden?: boolean;
 }
-
-const StyledAppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 ${APP_PADDING};
-  @media (max-width: 812px) {
-    padding: 0 20px;
-  }
-`;
-
-const StyledNavLogoContainer = styled.div``;
-
-const StyledNavLogo = styled.h1`
-  font-family: ${FONTS.vazirmatn};
-  font-size: 28px;
-  font-weight: bold;
-  text-decoration: none;
-  margin: 0;
-`;
-
-const StyledNavLinksContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
-
-const StyledNavLink = styled(Link)`
-  font-size: 14px;
-  color: ${COLORS.navy};
-  text-decoration: none;
-  padding: 0 12px;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const StyledDesktopNav = styled.div`
-  display: flex;
-  top: 0;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: calc(1210px + (${APP_PADDING} * 3));
-  @media (max-width: 812px) {
-    display: none;
-  }
-`;
 
 const StyledMobileNav = styled.div`
   display: flex;
@@ -154,22 +104,7 @@ export const App: React.FC = () => {
   const [navigationMenuOpen, openNavigationMenu] = React.useState(false);
   return (
     <BrowserRouter>
-      <StyledAppContainer>
-        {/* Desktop Nav */}
-        <StyledDesktopNav>
-          <StyledNavLogoContainer>
-            <StyledNavLink to="/">
-              <StyledNavLogo>
-                <FontAwesomeIcon icon={faCode} color={COMMON.primary} />
-              </StyledNavLogo>
-            </StyledNavLink>
-          </StyledNavLogoContainer>
-          <StyledNavLinksContainer>
-            <StyledNavLink to="/about">About</StyledNavLink>
-            <StyledNavLink to="/portfolio">Portfolio</StyledNavLink>
-            <StyledNavLink to="/contact">Contact</StyledNavLink>
-          </StyledNavLinksContainer>
-        </StyledDesktopNav>
+      <>
         {/* Mobile Nav */}
         <StyledMobileNav>
           <StyledBurgerMenuContainer>
@@ -229,13 +164,11 @@ export const App: React.FC = () => {
             </StyledMobileMenu>
           )}
         </StyledMobileNav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </StyledAppContainer>
+        <Title />
+        <AboutMe />
+        <MyWork />
+        <ContactMe />
+      </>
     </BrowserRouter>
   );
 };

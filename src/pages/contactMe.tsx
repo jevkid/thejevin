@@ -1,19 +1,25 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import styled from 'styled-components';
-import { COMMON } from '../constants';
+import { DesktopNavigation } from '../components/desktopNavigation';
+import { COLORS } from '../constants';
 import {
-  StyledPage,
+  StyledBGPage,
+  StyledNavigationContainer,
+  StyledPageContent,
   StyledPageTitle,
   StyledPageTitleContainer,
-  StyledSection,
 } from './styles';
 
 const StyledIconsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  height: 500px;
+  align-items: center;
+  width: 100%;
+  padding: 0 64px;
 `;
 
 const StyledIconContainer = styled.div``;
@@ -26,13 +32,16 @@ const StyledIconLink = styled.a`
   }
 `;
 
-export const Contact: React.FC = () => {
+export const ContactMe: React.FC = () => {
   return (
-    <StyledPage>
+    <StyledBGPage id="contact" backgroundImg="images/halfOffWhiteBg.jpg">
       <StyledPageTitleContainer>
         <StyledPageTitle>Contact</StyledPageTitle>
+        <StyledNavigationContainer>
+          <DesktopNavigation />
+        </StyledNavigationContainer>
       </StyledPageTitleContainer>
-      <StyledSection>
+      <StyledPageContent>
         <StyledIconsContainer>
           <StyledIconContainer>
             <StyledIconLink
@@ -42,8 +51,8 @@ export const Contact: React.FC = () => {
             >
               <FontAwesomeIcon
                 icon={faLinkedin}
-                size="2x"
-                color={COMMON.primary}
+                size="3x"
+                color={COLORS.black}
               />
             </StyledIconLink>
           </StyledIconContainer>
@@ -53,11 +62,7 @@ export const Contact: React.FC = () => {
               target="_blank"
               title="Github"
             >
-              <FontAwesomeIcon
-                icon={faGithub}
-                size="2x"
-                color={COMMON.primary}
-              />
+              <FontAwesomeIcon icon={faGithub} size="3x" color={COLORS.black} />
             </StyledIconLink>
           </StyledIconContainer>
           <StyledIconContainer>
@@ -68,13 +73,13 @@ export const Contact: React.FC = () => {
             >
               <FontAwesomeIcon
                 icon={faEnvelope}
-                size="2x"
-                color={COMMON.primary}
+                size="3x"
+                color={COLORS.black}
               />
             </StyledIconLink>
           </StyledIconContainer>
         </StyledIconsContainer>
-      </StyledSection>
-    </StyledPage>
+      </StyledPageContent>
+    </StyledBGPage>
   );
 };

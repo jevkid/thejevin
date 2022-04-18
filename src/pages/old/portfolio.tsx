@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { ContentCard } from '../components/contentCard';
+import { ContentCard } from '../../components/contentCard';
+import { DesktopNavigation } from '../../components/desktopNavigation';
 import {
   StyledP,
   StyledPage,
@@ -9,7 +10,7 @@ import {
   StyledPageTitleContainer,
   StyledSection,
   StyledSectionTitle,
-} from './styles';
+} from '../styles';
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -27,7 +28,7 @@ export const Portfolio: React.FC = () => {
   // Professional- Crowdcube, Cardiff University Student's App, Canadian Auto Association, ScotiaBank, Bank of Montreal, Skyscanner
   // Personal- Portfolio, DnD app, Murdle, DnD Character builder app, wedding website
   return (
-    <StyledPage>
+    <StyledPage id="portfolio">
       <StyledPageTitleContainer>
         <StyledPageTitle>Portfolio</StyledPageTitle>
         <StyledPageSubtitle>
@@ -112,6 +113,7 @@ export const Portfolio: React.FC = () => {
           </StyledCards>
         </StyledP>
       </StyledSection>
+      <DesktopNavigation />
     </StyledPage>
   );
 };

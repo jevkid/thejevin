@@ -1,7 +1,8 @@
 export const APP_PADDING = '116px';
 
 export const COLORS = {
-  offWhite: '#F9F4EF',
+  black: '#000000',
+  offWhite: '#FDFDF5',
   navy: '#011B68',
   orange: '#FF9367',
   pink: '#F4A8FF',
@@ -9,7 +10,8 @@ export const COLORS = {
   nude: '#F1E5E4',
   blue: '#7C99FD',
   neon: '#FF6B34',
-  turquoise: '#1EC4CA'
+  turquoise: '#1EC4CA',
+  green: '#656e55'
 };
 
 export const FONTS = {

@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { COMMON } from '../constants';
+import { COLORS, COMMON } from '../constants';
 
 const StyledContentCard = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid ${COMMON.primary};
+  border: 2px solid ${COLORS.black};
   background-color: #f7f7f7;
   width: 300px;
   height: 200px;
-  margin-right: 24px;
   margin-bottom: 24px;
-  &:hover {
-    box-shadow: 5px 5px gray;
+
+  @media (min-width: 812px) {
+    margin-right: 24px;
   }
 `;
 
@@ -34,7 +34,7 @@ const StyledTitleContainer = styled.div`
   justify-content: center;
   text-align: center;
   height: 100%;
-  background-color: ${COMMON.primary};
+  background-color: ${COLORS.black};
 `;
 
 const StyledTitleAsLogo = styled.h1`

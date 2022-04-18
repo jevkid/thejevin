@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { COMMON } from '../constants';
+import { COLORS, COMMON } from '../constants';
 
 interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -13,13 +13,13 @@ interface ButtonProps
 }
 
 const StyledButton = styled.button`
-  border: 2px solid ${COMMON.primary};
+  border: 2px solid ${COLORS.black};
   background: ${COMMON.background};
-  color: ${COMMON.primary};
+  color: ${COLORS.black};
   padding: 12px;
   &:hover {
     cursor: pointer;
-    background: ${COMMON.primary};
+    background: ${COLORS.black};
     color: ${COMMON.background};
   }
 `;
@@ -58,20 +58,17 @@ const StyledButtonContainer = styled.div`
 
 const StyledButtonAsLink = styled.a`
   text-decoration: none;
-  border: 2px solid ${COMMON.primary};
+  border: 2px solid ${COLORS.black};
   background: ${COMMON.background};
-  box-shadow: 5px 5px gray;
-  color: ${COMMON.primary};
+  color: ${COLORS.black};
   padding: 12px;
   &:hover {
     cursor: pointer;
-    background: ${COMMON.primary};
+    background: ${COLORS.black};
     color: ${COMMON.background};
   }
 
   display: inline-block;
-  // width: 130px;
-  // height: 40px;
   position: relative;
   overflow: hidden;
   &::before {

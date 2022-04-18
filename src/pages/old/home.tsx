@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { ButtonAsLink } from '../components/buttons';
-import { COMMON, FONTS } from '../constants';
+import { ButtonAsLink } from '../../components/buttons';
+import { COMMON, FONTS } from '../../constants';
 
 const StyledHomeContent = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const StyledHomeContent = styled.div`
 const StyledHomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin: 0;
   position: absolute;
   @media (min-width: 811px) {
@@ -33,8 +33,9 @@ const StyledHomeContainer = styled.div`
 `;
 
 const StyledHeadingTitle = styled.h1`
+  font-size: 100px;
   color: ${COMMON.primary};
-  font-family: ${FONTS.vazirmatn};
+  font-family: ${FONTS.questrial};
   font-weight: 700;
   margin: 12px 0;
 `;
@@ -49,7 +50,7 @@ const StyledHeadingSubtitle = styled.h2`
 const StyledWorkContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 30px 0;
   @media (max-width: 812px) {
     flex-direction: column;
@@ -66,7 +67,7 @@ const StyledWorkField = styled.div`
 `;
 
 const StyledButtonContainer = styled.div`
-  margin: 18px;
+  margin: 18px 0;
 `;
 
 export const Home: React.FC = () => {
@@ -93,9 +94,6 @@ export const Home: React.FC = () => {
             Connect
           </ButtonAsLink>
         </StyledButtonContainer>
-        <br />
-        <br />
-        <i>Under Construction</i>
       </StyledHomeContainer>
     </StyledHomeContent>
   );

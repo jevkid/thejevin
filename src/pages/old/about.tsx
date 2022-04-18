@@ -17,12 +17,18 @@ import {
   StyledPageTitleContainer,
   StyledSection,
   StyledSectionTitle,
-} from './styles';
-import { COMMON } from '../constants';
+} from '../styles';
+import { COMMON } from '../../constants';
+import { DesktopNavigation } from '../../components/desktopNavigation';
+import styled from 'styled-components';
+
+const StyledNavigationContainer = styled.div`
+  position: relative;
+`;
 
 export const About: React.FC = () => {
   return (
-    <StyledPage>
+    <StyledPage id="about">
       <StyledPageTitleContainer>
         <StyledPageTitle>Hi, I'm Megan.</StyledPageTitle>
         <StyledPageSubtitle>
@@ -140,6 +146,9 @@ export const About: React.FC = () => {
           two pups!
         </StyledP>
       </StyledSection>
+      <StyledNavigationContainer>
+        <DesktopNavigation />
+      </StyledNavigationContainer>
     </StyledPage>
   );
 };
