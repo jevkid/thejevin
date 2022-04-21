@@ -14,11 +14,32 @@ body {
   width: 100%;
   height: 100%;
   background-color: #F9F4EF;
+  transition: background-color 1s ease;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body.color-home {
+  background-color: #F9F4EF;
+}
+
+body.color-about {
+  background-color: #ccd1c1;
+}
+
+body.color-skills {
+  background-color: #90997e;
+}
+
+body.color-portfolio {
+  background-color: #6f775d;
+}
+
+body.color-contact {
+  background-color: #5a6347;
 }
 
 code {

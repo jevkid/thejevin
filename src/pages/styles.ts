@@ -4,17 +4,22 @@ import { COLORS, FONTS } from '../constants';
 export const StyledPage = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   min-height: 768px;
+  /* Full height */
   height: 100%;
+
+  -webkit-transition: background-color 1000ms ease;
+  -moz-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  -ms-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
 `;
 
-export const StyledBGPage = styled.div<{ backgroundImg: string; }>`
+export const StyledBGPage = styled.div<{ backgroundImg?: string; }>`
   display: flex;
-
-  @media (max-width: 812px) {
-    flex-direction: column;
-  }
-
+  flex-direction: column;
   @media (min-width: 812px) {
     background-image: ${({ backgroundImg }) => backgroundImg ? `url(${backgroundImg})` : ''};
     /* Full height */
@@ -31,7 +36,6 @@ export const StyledBGPage = styled.div<{ backgroundImg: string; }>`
 export const StyledPageContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
   height: 100%;
   min-height: fit-content;
   align-items: center;
@@ -44,10 +48,7 @@ export const StyledPageContent = styled.div`
   export const StyledPageTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
   min-height: 100%;
-  justify-content: center;
-  align-items: center;
   @media (max-width: 812px) {
     width: 100%;
     height: 350px;
@@ -57,7 +58,7 @@ export const StyledPageContent = styled.div`
 
 export const StyledPageTitle = styled.h2`
   color: ${COLORS.black};
-  font-family: BourtonScriptBold;
+  font-family: ${FONTS.questrial};
   font-weight: 700;
   font-size: 64px;
   margin: 0;
@@ -67,7 +68,8 @@ export const StyledPageSubtitle = styled.h4`
   color: ${COLORS.black};
   font-family: ${FONTS.manrope};
   font-weight: 400;
-  margin: 12px 0;
+  font-size: 24px;
+  margin: 0;
 `;
 
 export const StyledNavigationContainer = styled.div`

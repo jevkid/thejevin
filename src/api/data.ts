@@ -1,13 +1,13 @@
 export const home = {
   title: "Megan Jevin",
-  subtitle: "Team Lead / Frontend Engineer",
+  subtitle: "Cardiff based team lead / frontend engineer",
   connect: "Connect",
   connectLink: "https://www.linkedin.com/in/megan-jevin-51b76254/"
 };
 
 export const about = {
   title: "About me",
-  subtitle: "",
+  subtitle: "Hello! I'm Megan, a Cardiff based Team Lead/Frontend Engineer at Crowdcube.",
   content: [
     {
       title: "Leader",

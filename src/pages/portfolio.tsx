@@ -1,37 +1,33 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { portfolio } from '../api/data';
-import { ContentCard } from '../components/contentCard';
-import { DesktopNavigation } from '../components/desktopNavigation';
+// import { ContentCard } from '../components/contentCard';
 import {
-  StyledBGPage,
-  StyledNavigationContainer,
-  StyledP,
-  StyledPageContent,
+  StyledPage,
   StyledPageTitle,
   StyledPageTitleContainer,
-  StyledSection,
-  StyledSectionTitle,
 } from './styles';
 
-const StyledCards = styled.div`
+const StyledPortfolioContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 310px;
 `;
 
-export const MyWork: React.FC = () => {
+// const StyledCards = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+// `;
+
+export const Portfolio: React.FC = () => {
   return (
-    <StyledBGPage
-      id="portfolio"
-      backgroundImg="images/inverseHalfOffWhiteBg.jpg"
-    >
-      <StyledPageTitleContainer>
-        <StyledPageTitle>{portfolio.title}</StyledPageTitle>
-        <StyledNavigationContainer>
-          <DesktopNavigation />
-        </StyledNavigationContainer>
-      </StyledPageTitleContainer>
-      <StyledPageContent>
+    <StyledPage id="portfolio" className="page">
+      <StyledPortfolioContainer>
+        <StyledPageTitleContainer>
+          <StyledPageTitle>{portfolio.title}</StyledPageTitle>
+        </StyledPageTitleContainer>
+        {/* <StyledPageContent>
         <StyledSection>
           <StyledSectionTitle>
             {portfolio.professional.title}
@@ -59,7 +55,8 @@ export const MyWork: React.FC = () => {
             ))}
           </StyledCards>
         </StyledSection>
-      </StyledPageContent>
-    </StyledBGPage>
+      </StyledPageContent> */}
+      </StyledPortfolioContainer>
+    </StyledPage>
   );
 };

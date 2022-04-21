@@ -3,15 +3,19 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import styled from 'styled-components';
-import { DesktopNavigation } from '../components/desktopNavigation';
 import { COLORS } from '../constants';
 import {
-  StyledBGPage,
-  StyledNavigationContainer,
-  StyledPageContent,
+  StyledPage,
   StyledPageTitle,
   StyledPageTitleContainer,
 } from './styles';
+
+const StyledContactContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 310px;
+`;
 
 const StyledIconsContainer = styled.div`
   display: flex;
@@ -32,16 +36,13 @@ const StyledIconLink = styled.a`
   }
 `;
 
-export const ContactMe: React.FC = () => {
+export const Contact: React.FC = () => {
   return (
-    <StyledBGPage id="contact" backgroundImg="images/halfOffWhiteBg.jpg">
-      <StyledPageTitleContainer>
-        <StyledPageTitle>Contact</StyledPageTitle>
-        <StyledNavigationContainer>
-          <DesktopNavigation />
-        </StyledNavigationContainer>
-      </StyledPageTitleContainer>
-      <StyledPageContent>
+    <StyledPage id="contact" className="page">
+      <StyledContactContainer id="contact">
+        <StyledPageTitleContainer>
+          <StyledPageTitle>Contact</StyledPageTitle>
+        </StyledPageTitleContainer>
         <StyledIconsContainer>
           <StyledIconContainer>
             <StyledIconLink
@@ -79,7 +80,7 @@ export const ContactMe: React.FC = () => {
             </StyledIconLink>
           </StyledIconContainer>
         </StyledIconsContainer>
-      </StyledPageContent>
-    </StyledBGPage>
+      </StyledContactContainer>
+    </StyledPage>
   );
 };

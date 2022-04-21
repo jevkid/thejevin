@@ -2,32 +2,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { home } from '../api/data';
 import { ButtonAsLink } from '../components/buttons';
-import { DesktopNavigation } from '../components/desktopNavigation';
 import { COLORS, FONTS } from '../constants';
-
-const StyledHomeContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 768px;
-  height: 100%;
-  background-image: url(https://wallpaper.dog/large/20358818.jpg);
-  /* Full height */
-  height: 100%;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
+import { StyledPage } from './styles';
 
 const StyledHomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 0;
+  align-items: flex-start;
+  margin: 0 310px;
 `;
 
 const StyledHeadingTitle = styled.h1`
@@ -49,9 +31,9 @@ const StyledButtonContainer = styled.div`
   margin: 18px 0;
 `;
 
-export const Title: React.FC = () => {
+export const Home: React.FC = () => {
   return (
-    <StyledHomeContent>
+    <StyledPage id="home" className="page">
       <StyledHomeContainer>
         <StyledHeadingTitle>{home.title}</StyledHeadingTitle>
         <StyledHeadingSubtitle>{home.subtitle}</StyledHeadingSubtitle>
@@ -59,7 +41,6 @@ export const Title: React.FC = () => {
           <ButtonAsLink href={home.connectLink}>{home.connect}</ButtonAsLink>
         </StyledButtonContainer>
       </StyledHomeContainer>
-      <DesktopNavigation centered={true} />
-    </StyledHomeContent>
+    </StyledPage>
   );
 };
