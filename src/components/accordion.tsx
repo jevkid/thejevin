@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -11,7 +12,7 @@ const StyledAccordionContainer = styled.div`
   }
 `;
 
-const StyledAccordionTitle = styled.div<{ open?: boolean }>`
+const StyledAccordionTitle = styled(motion.div)<{ open?: boolean }>`
   display: flex;
   justify-content: space-between;
   font-size: 20px;
@@ -22,7 +23,7 @@ const StyledAccordionTitle = styled.div<{ open?: boolean }>`
   }
 `;
 
-const StyledAccordionContent = styled.div`
+const StyledAccordionContent = styled(motion.div)`
   padding: 12px;
 `;
 
@@ -66,11 +67,27 @@ export const Accordion: React.FC<AccordionProps> = (props) => {
         onClick={() => setContentShown(!contentShown)}
       >
         {props.title}{' '}
-        <StyledArrow direction={contentShown ? 'up' : 'down'}></StyledArrow>
+        <motion.div>
+          <StyledArrow direction={contentShown ? 'up' : 'down'}></StyledArrow>
+        </motion.div>
       </StyledAccordionTitle>
-      {contentShown && (
-        <StyledAccordionContent>{props.children}</StyledAccordionContent>
-      )}
+      <AnimatePresence initial={false}>
+        {contentShown && (
+          <StyledAccordionContent
+            key="content"
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: 'auto' },
+              collapsed: { opacity: 0, height: 0 },
+            }}
+            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+          >
+            {props.children}
+          </StyledAccordionContent>
+        )}
+      </AnimatePresence>
     </StyledAccordionContainer>
   );
 };

@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { COLORS, COMMON } from '../constants';
@@ -21,14 +22,13 @@ const StyledLogo = styled.img`
   height: 295px;
 `;
 
-const StyledTitleContainer = styled.div`
+const StyledTitleContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100%;
-  background-color: ${COLORS.white};
 `;
 
 const StyledTitle = styled.h2`
@@ -41,7 +41,7 @@ const StyledLink = styled.a`
   text-decoration: none;
 `;
 
-const StyledDescription = styled.div`
+const StyledDescription = styled(motion.div)`
   height: 140px;
   max-height: 140px;
   max-width: 375px;
@@ -82,15 +82,27 @@ export const FlatCard: React.FC<FlatCardProps> = (props) => {
       onMouseLeave={() => setShowDescription(false)}
     >
       {showDescription ? (
-        <>
-          <StyledTitleContainer>
+        <AnimatePresence>
+          <StyledTitleContainer
+            initial={{ y: -30 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5 }}
+            exit={{ y: 30 }}
+          >
             <StyledTitle>{props.subtitle}</StyledTitle>
             <StyledLink href={props.href} target="_blank">
               {props.href.split('www.')[1]}
             </StyledLink>
           </StyledTitleContainer>
-          <StyledDescription>{props.description}</StyledDescription>
-        </>
+          <StyledDescription
+            initial={{ y: 30 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5 }}
+            exit={{ y: -30 }}
+          >
+            {props.description}
+          </StyledDescription>
+        </AnimatePresence>
       ) : (
         <>
           {props.src ? (

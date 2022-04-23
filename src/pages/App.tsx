@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { DESKTOP_PADDING, COLORS, FONTS, BORDER_RADIUS } from '../constants';
 import { Home } from './home';
+import { navigation } from '../api/data';
 import { motion } from 'framer-motion';
 import { BrowserRouter } from 'react-router-dom';
 import { About } from './about';
@@ -185,18 +186,18 @@ export const App: React.FC = () => {
         <StyledDesktopNav>
           <StyledNavLogoContainer>
             <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
-              <StyledLogo>MJ</StyledLogo>
+              <StyledLogo>{navigation.home}</StyledLogo>
             </StyledNavLogoLink>
           </StyledNavLogoContainer>
           <StyledNavLinksContainer>
             <StyledNavLink onClick={() => scrollTo(aboutRef)}>
-              About
+              {navigation.about}
             </StyledNavLink>
             <StyledNavLink onClick={() => scrollTo(portfolioRef)}>
-              Portfolio
+              {navigation.portfolio}
             </StyledNavLink>
             <StyledNavLink onClick={() => scrollTo(contactRef)}>
-              Contact
+              {navigation.contact}
             </StyledNavLink>
           </StyledNavLinksContainer>
         </StyledDesktopNav>
@@ -214,7 +215,6 @@ export const App: React.FC = () => {
           </StyledBurgerMenuContainer>
           {navigationMenuOpen && (
             <StyledMobileMenu
-              id="mobile-navigation-menu"
               initial={{
                 borderRadius: '100%',
                 clipPath: 'circle(50% at 50% 50%)',
@@ -248,17 +248,17 @@ export const App: React.FC = () => {
                 <StyledMobileMenuLinks>
                   <StyledNavLogoContainer>
                     <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
-                      <StyledLogo>MJ</StyledLogo>
+                      <StyledLogo>{navigation.logo}</StyledLogo>
                     </StyledNavLogoLink>
                   </StyledNavLogoContainer>
                   <StyledMobileNavLink onClick={() => scrollTo(aboutRef)}>
-                    About
+                    {navigation.about}
                   </StyledMobileNavLink>
                   <StyledMobileNavLink onClick={() => scrollTo(portfolioRef)}>
-                    Portfolio
+                    {navigation.portfolio}
                   </StyledMobileNavLink>
                   <StyledMobileNavLink onClick={() => scrollTo(contactRef)}>
-                    Contact
+                    {navigation.contact}
                   </StyledMobileNavLink>
                 </StyledMobileMenuLinks>
               </motion.div>

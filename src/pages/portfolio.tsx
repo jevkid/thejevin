@@ -43,13 +43,10 @@ export const Portfolio: React.FC = () => {
           <StyledPageTitle>{portfolio.title}</StyledPageTitle>
         </StyledPageTitleContainer>
         <StyledBorder />
-        <StyledPageSubtitle>
-          Below are some personal and professional projects that I've worked on.
-          Hover over the image to get some more information.
-        </StyledPageSubtitle>
+        <StyledPageSubtitle>{portfolio.subtitle}</StyledPageSubtitle>
         <StyledSection>
           <StyledCards>
-            {portfolio.professional.content.map((content) => (
+            {portfolio.content.map((content) => (
               <FlatCard
                 key={content.href}
                 src={content.src}
@@ -58,7 +55,7 @@ export const Portfolio: React.FC = () => {
                 description={content.description}
               />
             ))}
-            {portfolio.personal.content.map((content) => (
+            {portfolio.content.map((content) => (
               <FlatCard
                 src={content.src ? content.src : undefined}
                 key={content.href}

@@ -71,30 +71,16 @@ export const About: React.FC = () => {
             </StyledListItem>
             <StyledListItem>
               I'm really passionate about trying to close the gender gap and
-              helping women and minorities pursue careers in technology. I've
-              been volunteering in classrooms, at hackathons, and virtual events
-              since I was in university. Most recently I acted as a mentor at a
-              Stemettes event, and started an initiative at work as well,
-              teaching the basics of HTML, CSS, and Javascript to my co-workers
-              who wish to learn.{' '}
+              helping women and minorities pursue careers in technology.
             </StyledListItem>
             <StyledListItem>
-              I love getting involved. During university I was the President of
-              the Computer Science Society for two years and was on the Student
-              Senate as the International Students Officer. I help run a local
-              Meetup called{' '}
-              <a
-                href="https://www.meetup.com/uxwales/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                UX Wales
-              </a>{' '}
-              (when the pandemic allows).
+              I love getting involved in things, mentoring, coaching, and
+              volunteering.
             </StyledListItem>
             <StyledListItem>
-              I like good UIs. I believe in programming with intention, and
-              always view what I'm working on through the eyes of the user.{' '}
+              I believe in programming with intention, and always view what I'm
+              working on through the eyes of the user. Just because something
+              looks cool doesn't mean it provides a good experience.
             </StyledListItem>
             <StyledListItem>
               I love to travel, but equally I love photographing my travels. I
@@ -203,10 +189,19 @@ export const About: React.FC = () => {
             </StyledP>
             <StyledP>
               I'm very active in the dev community, both locally and nationally.
-              I co-host a local meetup, UX Wales, and enjoy volunteering at
-              events held by organisations such as the Stemettes, or any
-              opportunity to help young women learn to code. I just love
-              teaching others and seeing them realise what they can do!
+              I've been volunteering in classrooms, at hackathons, and virtual
+              events since I was in university. I co-host a local meetup,{' '}
+              <a
+                href="https://www.meetup.com/uxwales/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                UX Wales
+              </a>
+              , and enjoy volunteering at events held by organisations such as
+              the Stemettes, or any opportunity to help young women learn to
+              code. I just love teaching others and seeing them realise what
+              they can do!
             </StyledP>
           </Accordion>
         </StyledPageTitleContainer>

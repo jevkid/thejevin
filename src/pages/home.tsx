@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { home } from '../api/data';
@@ -17,7 +18,7 @@ const StyledHomeContainer = styled.div`
   }
 `;
 
-const StyledHeadingTitle = styled.h1`
+const StyledHeadingTitle = styled(motion.h1)`
   font-size: 100px;
   color: ${COLORS.black};
   font-family: ${FONTS.questrial};
@@ -28,7 +29,7 @@ const StyledHeadingTitle = styled.h1`
   }
 `;
 
-const StyledHeadingSubtitle = styled.h2`
+const StyledHeadingSubtitle = styled(motion.h2)`
   color: ${COLORS.black};
   font-family: ${FONTS.manrope};
   font-weight: 400;
@@ -43,11 +44,27 @@ export const Home: React.FC = () => {
   return (
     <StyledPage id="home" className="page" centered={true}>
       <StyledHomeContainer>
-        <StyledHeadingTitle>{home.title}</StyledHeadingTitle>
-        <StyledHeadingSubtitle>{home.subtitle}</StyledHeadingSubtitle>
-        <StyledButtonContainer>
-          <ButtonAsLink href={home.connectLink}>{home.connect}</ButtonAsLink>
-        </StyledButtonContainer>
+        <AnimatePresence>
+          <StyledHeadingTitle
+            initial={{ y: -200 }} // what it starts at
+            animate={{ y: 0 }} // what we want to animate to
+            transition={{ duration: 0.5 }}
+            exit={{ y: 200 }} // when the component umounts
+          >
+            {home.title}
+          </StyledHeadingTitle>
+          <StyledHeadingSubtitle
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5 }}
+            exit={{ y: -200 }}
+          >
+            {home.subtitle}
+          </StyledHeadingSubtitle>
+          <StyledButtonContainer>
+            <ButtonAsLink href={home.connectLink}>{home.connect}</ButtonAsLink>
+          </StyledButtonContainer>
+        </AnimatePresence>
       </StyledHomeContainer>
     </StyledPage>
   );

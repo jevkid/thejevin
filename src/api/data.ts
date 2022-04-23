@@ -1,3 +1,11 @@
+export const navigation = {
+  logo: 'MJ',
+  home: 'Home',
+  about: 'About',
+  portfolio: 'Portfolio',
+  contact: 'Contact',
+};
+
 export const home = {
   title: "Megan Jevin",
   subtitle: "Cardiff based team lead / frontend engineer",
@@ -76,9 +84,7 @@ export const about = {
 
 export const portfolio = {
   title: "My work",
-  subtitle: "",
-  professional: {
-    title: "Professional",
+  subtitle: "Below are some personal and professional projects that I've worked on. Hover over the image to get some more information.",
     content: [
       {
         src: "/images/Crowdcube.png",
@@ -122,11 +128,6 @@ export const portfolio = {
         href: "https://www.skyscanner.net",
         description: "While interning at Skyscanner I worked within the Data Squad where we built tools and wrote programs that dealt with things such as hotel deduplication.",
       },
-    ]
-  },
-  personal: {
-    title: "Personal",
-    content: [
       {
         src: "/images/Wedding.jpg",
         subtitle: "Wedding Website",
@@ -158,5 +159,4 @@ export const portfolio = {
         description: "An online web portfolio built in React."
       },
     ]
-  }
 }
