@@ -1,7 +1,9 @@
-export const APP_PADDING = '116px';
+export const DESKTOP_PADDING = '100px';
+export const BORDER_RADIUS = '6px';
 
 export const COLORS = {
   black: '#000000',
+  white: '#ffffff',
   offWhite: '#FDFDF5',
   navy: '#011B68',
   orange: '#FF9367',

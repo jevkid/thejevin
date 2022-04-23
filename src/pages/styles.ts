@@ -1,20 +1,18 @@
-import styled from 'styled-components';
-import { COLORS, FONTS } from '../constants';
+import styled from 'styled-components/macro';
+import { BORDER_RADIUS, COLORS, COMMON, FONTS } from '../constants';
 
-export const StyledPage = styled.div`
+export const StyledPage = styled.div<{ centered?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  min-height: 768px;
-  /* Full height */
-  height: 100%;
-
-  -webkit-transition: background-color 1000ms ease;
-  -moz-transition: background-color 1000ms ease;
-  -o-transition: background-color 1000ms ease;
-  -ms-transition: background-color 1000ms ease;
-  transition: background-color 1000ms ease;
+  justify-content: ${({ centered }) => centered ? 'center' : 'flex-start'};
+  min-height: ${({ centered }) => centered ? '768px' : '768px'};
+  ${({ centered }) => centered ? `
+    height: 100%;
+  ` : ''};
+  @media (max-width: 500px) {
+    max-width: 400px;
+  }
 `;
 
 export const StyledBGPage = styled.div<{ backgroundImg?: string; }>`
@@ -45,14 +43,55 @@ export const StyledPageContent = styled.div`
   }
 `;
 
-  export const StyledPageTitleContainer = styled.div`
+export const StyledBorder = styled.hr`
+  border-bottom: 0.5px solid #000000;
+  width: 100%;
+  border-style: solid;
+  color: black;
+  @media (max-width: 812px) {
+    width: 85%;
+  }
+`;
+
+export const shiny = `
+  border-radius: ${BORDER_RADIUS};
+  padding: 12px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+    background: ${COLORS.black};
+    color: ${COMMON.background};
+    a {
+      color: ${COMMON.background};
+    }
+  }
+
+  &:hover::before {
+    left: 150px;
+    transition: all 0.85s;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -80px;
+    height: 100px;
+    width: 70px;
+    background: rgba(255, 255, 255, 0.7);
+    transform: rotate(20deg);
+  }
+`;
+
+export const StyledPageTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   @media (max-width: 812px) {
-    width: 100%;
-    height: 350px;
-    background-image: url('images/greenBg.jpg');
+    width: 90%;
+    align-items: center;
   }
 `;
 
@@ -61,7 +100,10 @@ export const StyledPageTitle = styled.h2`
   font-family: ${FONTS.questrial};
   font-weight: 700;
   font-size: 64px;
-  margin: 0;
+  margin: 36px 0;
+  @media (max-width: 812px) {
+    margin: 16px 0;
+  }
 `;
 
 export const StyledPageSubtitle = styled.h4`
@@ -78,13 +120,10 @@ export const StyledNavigationContainer = styled.div`
   align-items: baseline;
 `;
 
-
 export const StyledSection = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0 64px;
-
+  margin: 36px 0;
 `;
 
 export const StyledSectionTitle = styled.h3`
@@ -98,4 +137,5 @@ export const StyledSectionTitle = styled.h3`
 
 export const StyledP = styled.p`
   color: ${COLORS.black};
+  font-size: 18px;
 `;

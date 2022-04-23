@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { COLORS, COMMON } from '../constants';
+import styled from 'styled-components/macro';
+import { BORDER_RADIUS, COLORS, COMMON } from '../constants';
+import { shiny } from '../pages/styles';
 
 interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -14,8 +15,9 @@ interface ButtonProps
 
 const StyledButton = styled.button`
   border: 2px solid ${COLORS.black};
-  background: ${COMMON.background};
+  background: ${COLORS.white};
   color: ${COLORS.black};
+  border-radius: ${BORDER_RADIUS};
   padding: 12px;
   &:hover {
     cursor: pointer;
@@ -59,32 +61,9 @@ const StyledButtonContainer = styled.div`
 const StyledButtonAsLink = styled.a`
   text-decoration: none;
   border: 2px solid ${COLORS.black};
-  background: ${COMMON.background};
+  background: ${COLORS.white};
   color: ${COLORS.black};
-  padding: 12px;
-  &:hover {
-    cursor: pointer;
-    background: ${COLORS.black};
-    color: ${COMMON.background};
-  }
-
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  &::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: -80px;
-    height: 100px;
-    width: 70px;
-    background: rgba(255, 255, 255, 0.7);
-    transform: rotate(20deg);
-  }
-  &:hover::before {
-    left: 150px;
-    transition: all 0.85s;
-  }
+  ${shiny}
 `;
 
 export const ButtonAsLink: React.FC<ButtonAsLinkProps> = (props) => {

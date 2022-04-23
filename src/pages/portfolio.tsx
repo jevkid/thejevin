@@ -1,24 +1,39 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { portfolio } from '../api/data';
-// import { ContentCard } from '../components/contentCard';
+import { FlatCard } from '../components/flatCard';
+import { DESKTOP_PADDING } from '../constants';
 import {
+  StyledBorder,
   StyledPage,
+  StyledPageSubtitle,
   StyledPageTitle,
   StyledPageTitleContainer,
+  StyledSection,
 } from './styles';
 
 const StyledPortfolioContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 310px;
+  margin: 0 ${DESKTOP_PADDING};
+  margin-bottom: 36px;
+  @media (max-width: 812px) {
+    align-items: center;
+    margin: 0 16px;
+    text-align: center;
+    width: 100%;
+    margin-top: 100px;
+  }
 `;
 
-// const StyledCards = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-// `;
+const StyledCards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  @media (max-width: 812px) {
+    justify-content: center;
+  }
+`;
 
 export const Portfolio: React.FC = () => {
   return (
@@ -27,27 +42,26 @@ export const Portfolio: React.FC = () => {
         <StyledPageTitleContainer>
           <StyledPageTitle>{portfolio.title}</StyledPageTitle>
         </StyledPageTitleContainer>
-        {/* <StyledPageContent>
+        <StyledBorder />
+        <StyledPageSubtitle>
+          Below are some personal and professional projects that I've worked on.
+          Hover over the image to get some more information.
+        </StyledPageSubtitle>
         <StyledSection>
-          <StyledSectionTitle>
-            {portfolio.professional.title}
-          </StyledSectionTitle>
           <StyledCards>
             {portfolio.professional.content.map((content) => (
-              <ContentCard
+              <FlatCard
+                key={content.href}
                 src={content.src}
                 subtitle={content.subtitle}
                 href={content.href}
                 description={content.description}
               />
             ))}
-          </StyledCards>
-        </StyledSection>
-        <StyledSection>
-          <StyledSectionTitle>{portfolio.personal.title}</StyledSectionTitle>
-          <StyledCards>
             {portfolio.personal.content.map((content) => (
-              <ContentCard
+              <FlatCard
+                src={content.src ? content.src : undefined}
+                key={content.href}
                 subtitle={content.subtitle}
                 href={content.href}
                 description={content.description}
@@ -55,7 +69,6 @@ export const Portfolio: React.FC = () => {
             ))}
           </StyledCards>
         </StyledSection>
-      </StyledPageContent> */}
       </StyledPortfolioContainer>
     </StyledPage>
   );

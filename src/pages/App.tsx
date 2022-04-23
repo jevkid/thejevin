@@ -1,31 +1,85 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { COLORS } from '../constants';
+import styled from 'styled-components/macro';
+import { DESKTOP_PADDING, COLORS, FONTS, BORDER_RADIUS } from '../constants';
 import { Home } from './home';
 import { motion } from 'framer-motion';
 import { BrowserRouter } from 'react-router-dom';
 import { About } from './about';
 import { Portfolio } from './portfolio';
 import { Contact } from './contact';
-import { Skills } from './skills';
+import { shiny } from './styles';
 
 interface StyledBurgerMenuProps {
   open?: boolean;
   hidden?: boolean;
 }
+const StyledDesktopNav = styled.div`
+  display: flex;
+  top: 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  @media (max-width: 812px) {
+    display: none;
+  }
+`;
+
+const StyledNavLogoContainer = styled.div`
+  width: 38px;
+  height: 30px;
+  padding: 4px;
+  border: 2px solid ${COLORS.black};
+  border-radius: ${BORDER_RADIUS};
+  position: relative;
+  margin: 16px ${DESKTOP_PADDING};
+  background: ${COLORS.white};
+  color: ${COLORS.black};
+  ${shiny};
+`;
+
+const StyledNavLogoLink = styled.a`
+  font-family: ${FONTS.questrial};
+  font-size: 24px;
+  color: ${COLORS.black};
+  font-weight: 700;
+  text-decoration: none;
+`;
+
+const StyledNavLinksContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px ${DESKTOP_PADDING};
+`;
+
+const StyledNavLink = styled.a`
+  font-family: ${FONTS.questrial};
+  font-size: 24px;
+  color: ${COLORS.black};
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0 12px;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
 
 const StyledMobileNav = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
   top: 0;
   position: absolute;
   right: 0;
+  @media (min-width: 812px) {
+    display: none;
+  }
 `;
 
-const StyledLogoContainer = styled.h3`
+const StyledLogo = styled.h3`
   margin: 0;
-  padding: 24px 36px;
+  padding: 0;
+  position: absolute;
 `;
 
 const StyledBurgerMenuContainer = styled.div`
@@ -56,13 +110,18 @@ const StyledMobileMenuLinks = styled.div`
   align-items: center;
 `;
 
-const StyledMobileNavLink = styled.a`
+const StyledMobileNavLink = styled.button`
+  appearance: none;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
   font-size: 24px;
   color: ${COLORS.black};
   text-decoration: none;
   padding: 12px;
   &:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
 
@@ -107,60 +166,42 @@ const StyledBurgerLines = styled.div<StyledBurgerMenuProps>`
 
 export const App: React.FC = () => {
   const [navigationMenuOpen, openNavigationMenu] = React.useState(false);
+  const homeRef = React.useRef<HTMLDivElement>(null);
+  const aboutRef = React.useRef<HTMLDivElement>(null);
+  const portfolioRef = React.useRef<HTMLDivElement>(null);
+  const contactRef = React.useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
-    if (window && document) {
-      const body = document.getElementById('body');
-      const pages = document.getElementsByClassName('page');
-      // Change 33% earlier than scroll position so colour is there when you arrive.
-      const scroll = window.scrollY + window.innerHeight / 3;
-      // if position is within range of this panel.
-      // So position of (position of top of div <= scroll position) && (position of bottom of div > scroll position).
-      // Remember we set the scroll to 33% earlier in scroll var.
-      for (let i = 0; i < pages.length; i++) {
-        const section = pages[i].id;
-        let boundingRect = pages[i].getBoundingClientRect();
-        if (
-          body &&
-          boundingRect.top <= scroll &&
-          boundingRect.top + pages[i].clientHeight > scroll
-        ) {
-          // Remove all classes on body with 'color-'
-          if (
-            body.classList.contains('color-home') ||
-            body.classList.contains('color-about') ||
-            body.classList.contains('color-skills') ||
-            body.classList.contains('color-portfolio') ||
-            body.classList.contains('color-contact')
-          ) {
-            body.classList.forEach((index) => {
-              const activeClass = index.match(/(^|\s)color-\S+/g);
-              if (activeClass && activeClass.length > 0) {
-                body.classList.remove(activeClass[0]);
-              }
-            });
-          }
-          // Add class of currently active div
-          body?.classList.add(`color-${section}`);
-        }
-      }
+  const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
+    openNavigationMenu(false);
+    if (ref?.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  React.useEffect(() => {
-    if (!window) {
-      return;
-    }
-    window.addEventListener('scroll', handleScroll);
-    return () => window && window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <BrowserRouter>
       <>
+        {/* Desktop Nav */}
+        <StyledDesktopNav>
+          <StyledNavLogoContainer>
+            <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
+              <StyledLogo>MJ</StyledLogo>
+            </StyledNavLogoLink>
+          </StyledNavLogoContainer>
+          <StyledNavLinksContainer>
+            <StyledNavLink onClick={() => scrollTo(aboutRef)}>
+              About
+            </StyledNavLink>
+            <StyledNavLink onClick={() => scrollTo(portfolioRef)}>
+              Portfolio
+            </StyledNavLink>
+            <StyledNavLink onClick={() => scrollTo(contactRef)}>
+              Contact
+            </StyledNavLink>
+          </StyledNavLinksContainer>
+        </StyledDesktopNav>
         {/* Mobile Nav */}
         <StyledMobileNav>
-          <StyledLogoContainer>MJ</StyledLogoContainer>
           <StyledBurgerMenuContainer>
             <StyledBurgerMenu
               id="burger-menu-toggle"
@@ -205,15 +246,18 @@ export const App: React.FC = () => {
                 }}
               >
                 <StyledMobileMenuLinks>
-                  <StyledMobileNavLink href="/">Home</StyledMobileNavLink>
-                  <StyledMobileNavLink href="/about">About</StyledMobileNavLink>
-                  <StyledMobileNavLink href="/skills">
-                    Skills
+                  <StyledNavLogoContainer>
+                    <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
+                      <StyledLogo>MJ</StyledLogo>
+                    </StyledNavLogoLink>
+                  </StyledNavLogoContainer>
+                  <StyledMobileNavLink onClick={() => scrollTo(aboutRef)}>
+                    About
                   </StyledMobileNavLink>
-                  <StyledMobileNavLink href="/portfolio">
+                  <StyledMobileNavLink onClick={() => scrollTo(portfolioRef)}>
                     Portfolio
                   </StyledMobileNavLink>
-                  <StyledMobileNavLink href="/contact">
+                  <StyledMobileNavLink onClick={() => scrollTo(contactRef)}>
                     Contact
                   </StyledMobileNavLink>
                 </StyledMobileMenuLinks>
@@ -221,12 +265,18 @@ export const App: React.FC = () => {
             </StyledMobileMenu>
           )}
         </StyledMobileNav>
-
-        <Home />
-        <About />
-        <Skills />
-        <Portfolio />
-        <Contact />
+        <div ref={homeRef}>
+          <Home />
+        </div>
+        <div ref={aboutRef}>
+          <About />
+        </div>
+        <div ref={portfolioRef}>
+          <Portfolio />
+        </div>
+        <div ref={contactRef}>
+          <Contact />
+        </div>
       </>
     </BrowserRouter>
   );

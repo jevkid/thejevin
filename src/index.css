@@ -13,7 +13,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  background-color: #F9F4EF;
+  background-color: #f3f4f2;
   transition: background-color 1s ease;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -23,7 +23,7 @@ body {
 }
 
 body.color-home {
-  background-color: #F9F4EF;
+  background-color: #f3f4f2;
 }
 
 body.color-about {
@@ -31,15 +31,15 @@ body.color-about {
 }
 
 body.color-skills {
-  background-color: #90997e;
+  background-color: #b2b7a5;
 }
 
 body.color-portfolio {
-  background-color: #6f775d;
+  background-color: #99a08a;
 }
 
 body.color-contact {
-  background-color: #5a6347;
+  background-color: #858c74;
 }
 
 code {
