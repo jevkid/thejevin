@@ -1,38 +1,68 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import * as React from 'react';
-import styled from 'styled-components';
-import { COMMON } from '../constants';
 import {
+  faGithub,
+  faLinkedinIn,
+  faInstagram,
+} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as React from 'react';
+import styled from 'styled-components/macro';
+import { COLORS, DESKTOP_PADDING } from '../constants';
+import {
+  shiny,
+  StyledBorder,
   StyledPage,
+  StyledPageSubtitle,
   StyledPageTitle,
   StyledPageTitleContainer,
-  StyledSection,
 } from './styles';
+
+const StyledContactContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 ${DESKTOP_PADDING};
+  @media (max-width: 812px) {
+    align-items: center;
+    margin: 0 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+  }
+`;
 
 const StyledIconsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  height: 200px;
+  align-items: center;
+  width: 100%;
+  margin: 0 24px;
+  margin-left: 0;
+  @media (max-width: 812px) {
+    justify-content: space-around;
+  }
 `;
 
 const StyledIconContainer = styled.div``;
 
 const StyledIconLink = styled.a`
-  &:hover {
-    svg {
-      color: black;
-    }
+  svg {
+    ${shiny};
   }
 `;
 
 export const Contact: React.FC = () => {
   return (
-    <StyledPage>
-      <StyledPageTitleContainer>
-        <StyledPageTitle>Contact</StyledPageTitle>
-      </StyledPageTitleContainer>
-      <StyledSection>
+    <StyledPage id="contact" className="page">
+      <StyledContactContainer>
+        <StyledPageTitleContainer>
+          <StyledPageTitle>Contact</StyledPageTitle>
+        </StyledPageTitleContainer>
+        <StyledBorder />
+        <StyledPageSubtitle>
+          Have a question? Want to chat about a project? Feel free to get in
+          touch!
+        </StyledPageSubtitle>
         <StyledIconsContainer>
           <StyledIconContainer>
             <StyledIconLink
@@ -41,9 +71,9 @@ export const Contact: React.FC = () => {
               title="LinkedIn"
             >
               <FontAwesomeIcon
-                icon={faLinkedin}
-                size="2x"
-                color={COMMON.primary}
+                icon={faLinkedinIn}
+                size="3x"
+                color={COLORS.black}
               />
             </StyledIconLink>
           </StyledIconContainer>
@@ -53,10 +83,19 @@ export const Contact: React.FC = () => {
               target="_blank"
               title="Github"
             >
+              <FontAwesomeIcon icon={faGithub} size="3x" color={COLORS.black} />
+            </StyledIconLink>
+          </StyledIconContainer>
+          <StyledIconContainer>
+            <StyledIconLink
+              href="https://www.instagram.com/megzdelight"
+              target="_blank"
+              title="Instagram"
+            >
               <FontAwesomeIcon
-                icon={faGithub}
-                size="2x"
-                color={COMMON.primary}
+                icon={faInstagram}
+                size="3x"
+                color={COLORS.black}
               />
             </StyledIconLink>
           </StyledIconContainer>
@@ -68,13 +107,13 @@ export const Contact: React.FC = () => {
             >
               <FontAwesomeIcon
                 icon={faEnvelope}
-                size="2x"
-                color={COMMON.primary}
+                size="3x"
+                color={COLORS.black}
               />
             </StyledIconLink>
           </StyledIconContainer>
         </StyledIconsContainer>
-      </StyledSection>
+      </StyledContactContainer>
     </StyledPage>
   );
 };

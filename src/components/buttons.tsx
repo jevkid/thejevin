@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { COMMON } from '../constants';
+import styled from 'styled-components/macro';
+import { BORDER_RADIUS, COLORS, COMMON } from '../constants';
+import { shiny } from '../pages/styles';
 
 interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -13,13 +14,14 @@ interface ButtonProps
 }
 
 const StyledButton = styled.button`
-  border: 2px solid ${COMMON.primary};
-  background: ${COMMON.background};
-  color: ${COMMON.primary};
+  border: 2px solid ${COLORS.black};
+  background: ${COLORS.white};
+  color: ${COLORS.black};
+  border-radius: ${BORDER_RADIUS};
   padding: 12px;
   &:hover {
     cursor: pointer;
-    background: ${COMMON.primary};
+    background: ${COLORS.black};
     color: ${COMMON.background};
   }
 `;
@@ -58,36 +60,10 @@ const StyledButtonContainer = styled.div`
 
 const StyledButtonAsLink = styled.a`
   text-decoration: none;
-  border: 2px solid ${COMMON.primary};
-  background: ${COMMON.background};
-  box-shadow: 5px 5px gray;
-  color: ${COMMON.primary};
-  padding: 12px;
-  &:hover {
-    cursor: pointer;
-    background: ${COMMON.primary};
-    color: ${COMMON.background};
-  }
-
-  display: inline-block;
-  // width: 130px;
-  // height: 40px;
-  position: relative;
-  overflow: hidden;
-  &::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: -80px;
-    height: 100px;
-    width: 70px;
-    background: rgba(255, 255, 255, 0.7);
-    transform: rotate(20deg);
-  }
-  &:hover::before {
-    left: 150px;
-    transition: all 0.85s;
-  }
+  border: 2px solid ${COLORS.black};
+  background: ${COLORS.white};
+  color: ${COLORS.black};
+  ${shiny}
 `;
 
 export const ButtonAsLink: React.FC<ButtonAsLinkProps> = (props) => {

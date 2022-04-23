@@ -1,102 +1,71 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
+import { home } from '../api/data';
 import { ButtonAsLink } from '../components/buttons';
-import { COMMON, FONTS } from '../constants';
-
-const StyledHomeContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 600px;
-  @media (min-width: 811px) {
-    position: relative;
-  }
-`;
+import { COLORS, DESKTOP_PADDING, FONTS } from '../constants';
+import { StyledPage } from './styles';
 
 const StyledHomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 0;
-  position: absolute;
-  @media (min-width: 811px) {
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
+  align-items: flex-start;
+  margin: 0 ${DESKTOP_PADDING};
   @media (max-width: 812px) {
-    top: 10%;
+    align-items: center;
+    text-align: center;
+    margin: 0 30px;
   }
 `;
 
-const StyledHeadingTitle = styled.h1`
-  color: ${COMMON.primary};
-  font-family: ${FONTS.vazirmatn};
+const StyledHeadingTitle = styled(motion.h1)`
+  font-size: 100px;
+  color: ${COLORS.black};
+  font-family: ${FONTS.questrial};
   font-weight: 700;
   margin: 12px 0;
+  @media (max-width: 812px) {
+    font-size: 72px;
+  }
 `;
 
-const StyledHeadingSubtitle = styled.h2`
-  color: ${COMMON.secondary};
+const StyledHeadingSubtitle = styled(motion.h2)`
+  color: ${COLORS.black};
   font-family: ${FONTS.manrope};
   font-weight: 400;
   margin: 0;
 `;
 
-const StyledWorkContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 0;
-  @media (max-width: 812px) {
-    flex-direction: column;
-    padding: 22px;
-  }
-`;
-
-const StyledWorkField = styled.div`
-  width: 30%;
-  @media (max-width: 812px) {
-    padding: 6px 0;
-    width: 100%;
-  }
-`;
-
 const StyledButtonContainer = styled.div`
-  margin: 18px;
+  margin: 18px 0;
 `;
 
 export const Home: React.FC = () => {
   return (
-    <StyledHomeContent>
+    <StyledPage id="home" className="page" centered={true}>
       <StyledHomeContainer>
-        <StyledHeadingTitle>Megan Jevin</StyledHeadingTitle>
-        <StyledHeadingSubtitle>
-          Team Lead / Frontend Engineer
-        </StyledHeadingSubtitle>
-        <StyledWorkContainer>
-          <StyledWorkField>
-            <b>Currently</b> a Team Lead and Frontend Engineer at Crowdcube
-            where I manage some fantastic people and help fund the wonderful.
-          </StyledWorkField>
-          <StyledWorkField>
-            <b>Previously</b> worked at Cardiff University, Inspiretec, and
-            Skyscanner where I've gained invaluable experience in the fintech,
-            travel, and education industries.
-          </StyledWorkField>
-        </StyledWorkContainer>
-        <StyledButtonContainer>
-          <ButtonAsLink href="https://www.linkedin.com/in/megan-jevin-51b76254/">
-            Connect
-          </ButtonAsLink>
-        </StyledButtonContainer>
-        <br />
-        <br />
-        <i>Under Construction</i>
+        <AnimatePresence>
+          <StyledHeadingTitle
+            initial={{ y: -200 }} // what it starts at
+            animate={{ y: 0 }} // what we want to animate to
+            transition={{ duration: 0.5 }}
+            exit={{ y: 200 }} // when the component umounts
+          >
+            {home.title}
+          </StyledHeadingTitle>
+          <StyledHeadingSubtitle
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5 }}
+            exit={{ y: -200 }}
+          >
+            {home.subtitle}
+          </StyledHeadingSubtitle>
+          <StyledButtonContainer>
+            <ButtonAsLink href={home.connectLink}>{home.connect}</ButtonAsLink>
+          </StyledButtonContainer>
+        </AnimatePresence>
       </StyledHomeContainer>
-    </StyledHomeContent>
+    </StyledPage>
   );
 };
