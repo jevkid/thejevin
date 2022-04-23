@@ -186,7 +186,7 @@ export const App: React.FC = () => {
         <StyledDesktopNav>
           <StyledNavLogoContainer>
             <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
-              <StyledLogo>{navigation.home}</StyledLogo>
+              <StyledLogo>{navigation.logo}</StyledLogo>
             </StyledNavLogoLink>
           </StyledNavLogoContainer>
           <StyledNavLinksContainer>
