@@ -1,72 +1,47 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { portfolio } from '../api/data';
-import { FlatCard } from '../components/flatCard';
-import { DESKTOP_PADDING } from '../constants';
+import { RoundedCard } from '../components/roundedCard';
 import {
   StyledBorder,
+  StyledPageContent,
   StyledPage,
   StyledPageSubtitle,
   StyledPageTitle,
   StyledPageTitleContainer,
-  StyledSection,
 } from './styles';
-
-const StyledPortfolioContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 ${DESKTOP_PADDING};
-  margin-bottom: 36px;
-  @media (max-width: 812px) {
-    align-items: center;
-    margin: 0 16px;
-    text-align: center;
-    width: 100%;
-    margin-top: 100px;
-  }
-`;
 
 const StyledCards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  @media (max-width: 812px) {
+  width: 75%;
+  @media (max-width: 830px) {
     justify-content: center;
+    width: 100%;
   }
 `;
 
 export const Portfolio: React.FC = () => {
   return (
     <StyledPage id="portfolio" className="page">
-      <StyledPortfolioContainer>
+      <StyledPageContent>
         <StyledPageTitleContainer>
           <StyledPageTitle>{portfolio.title}</StyledPageTitle>
         </StyledPageTitleContainer>
         <StyledBorder />
         <StyledPageSubtitle>{portfolio.subtitle}</StyledPageSubtitle>
-        <StyledSection>
-          <StyledCards>
-            {portfolio.content.map((content) => (
-              <FlatCard
-                key={content.href}
-                src={content.src}
-                subtitle={content.subtitle}
-                href={content.href}
-                description={content.description}
-              />
-            ))}
-            {portfolio.content.map((content) => (
-              <FlatCard
-                src={content.src ? content.src : undefined}
-                key={content.href}
-                subtitle={content.subtitle}
-                href={content.href}
-                description={content.description}
-              />
-            ))}
-          </StyledCards>
-        </StyledSection>
-      </StyledPortfolioContainer>
+        <StyledCards>
+          {portfolio.content.map((content) => (
+            <RoundedCard
+              src={content.src ? content.src : undefined}
+              key={content.href}
+              subtitle={content.subtitle}
+              href={content.href}
+              description={content.description}
+            />
+          ))}
+        </StyledCards>
+      </StyledPageContent>
     </StyledPage>
   );
 };

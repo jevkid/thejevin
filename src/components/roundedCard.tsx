@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { COLORS, COMMON } from '../constants';
+import { BORDER_RADIUS, COLORS, COMMON } from '../constants';
 import { StyledLink } from '../pages/styles';
 
 const StyledFlatCard = styled.div`
@@ -9,6 +9,8 @@ const StyledFlatCard = styled.div`
   flex-direction: column;
   background-color: ${COLORS.white};
   width: 375px;
+  border-radius: ${BORDER_RADIUS};
+  margin: 12px;
   height: auto;
   max-height: 295px;
   @media (max-width: 500px) {
@@ -18,6 +20,7 @@ const StyledFlatCard = styled.div`
 `;
 
 const StyledLogo = styled.img`
+  border-radius: ${BORDER_RADIUS};
   width: -webkit-fill-available;
   max-width: 375px;
   height: 295px;
@@ -45,27 +48,6 @@ const StyledDescription = styled(motion.div)`
   padding: 12px 22px;
 `;
 
-const StyledFlatCardBottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0 12px;
-  height: 54px;
-  max-height: 54px;
-`;
-
-const StyledContentTitle = styled.span`
-  color: black;
-  font-weight: bold;
-`;
-
-const StyledContentLink = styled.a`
-  text-decoration: none;
-  color: black;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 interface FlatCardProps {
   src?: string;
   href: string;
@@ -73,7 +55,7 @@ interface FlatCardProps {
   description: string;
 }
 
-export const FlatCard: React.FC<FlatCardProps> = (props) => {
+export const RoundedCard: React.FC<FlatCardProps> = (props) => {
   const [showDescription, setShowDescription] = React.useState(false);
 
   return (
@@ -104,18 +86,7 @@ export const FlatCard: React.FC<FlatCardProps> = (props) => {
           </StyledDescription>
         </AnimatePresence>
       ) : (
-        <>
-          {props.src ? (
-            <StyledLogo src={props.src} alt={props.subtitle} />
-          ) : (
-            <StyledFlatCardBottom>
-              <StyledContentTitle>{props.subtitle}</StyledContentTitle>
-              <StyledContentLink href={props.href} target="_blank">
-                {props.href.split('www.')[1]}
-              </StyledContentLink>
-            </StyledFlatCardBottom>
-          )}
-        </>
+        <StyledLogo src={props.src} alt={props.subtitle} />
       )}
     </StyledFlatCard>
   );

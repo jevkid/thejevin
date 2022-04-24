@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
+import { COMMON } from '../constants';
 
 const StyledAccordionContainer = styled.div`
   display: flex;
@@ -16,7 +17,8 @@ const StyledAccordionTitle = styled(motion.div)<{ open?: boolean }>`
   display: flex;
   justify-content: space-between;
   font-size: 20px;
-  border-bottom: 1px solid black;
+  color: ${COMMON.subtitleColor};
+  border-bottom: 1px solid ${COMMON.subtitleColor};
   padding: 12px;
   &:hover {
     cursor: pointer;
@@ -28,12 +30,13 @@ const StyledAccordionContent = styled(motion.div)`
 `;
 
 const StyledArrow = styled.i<{ direction: 'up' | 'down' }>`
-  border: solid black;
+  border: solid ${COMMON.subtitleColor};
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
   height: 5px;
   width: 5px;
+  transition: 0.5s;
   ${({ direction }) =>
     direction === 'up' &&
     `
@@ -58,6 +61,24 @@ export interface AccordionProps
   title: string;
 }
 
+const tagVariants = {
+  open: {
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.6,
+      ease: [0.83, 0, 0.17, 1],
+    },
+  },
+  collapsed: {
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.83, 0, 0.17, 1],
+    },
+  },
+};
+
 export const Accordion: React.FC<AccordionProps> = (props) => {
   const [contentShown, setContentShown] = React.useState<boolean>(false);
   return (
@@ -78,11 +99,7 @@ export const Accordion: React.FC<AccordionProps> = (props) => {
             initial="collapsed"
             animate="open"
             exit="collapsed"
-            variants={{
-              open: { opacity: 1, height: 'auto' },
-              collapsed: { opacity: 0, height: 0 },
-            }}
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            variants={tagVariants}
           >
             {props.children}
           </StyledAccordionContent>
