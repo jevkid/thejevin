@@ -35,6 +35,9 @@ const StyledHeadingSubtitle = styled(motion.h2)`
   font-weight: 700;
   font-size: 52px;
   margin: 0;
+  @media (max-width: 812px) {
+    font-size: 32px;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
