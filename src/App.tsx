@@ -1,83 +1,83 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode } from '@fortawesome/free-solid-svg-icons';
-import { APP_PADDING, COLORS, COMMON, FONTS } from './constants';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Portfolio } from './pages/portfolio';
+import styled from 'styled-components/macro';
+import { DESKTOP_PADDING, FONTS, COMMON } from './constants';
 import { Home } from './pages/home';
-import { About } from './pages/about';
-import { Contact } from './pages/contact';
+import { navigation } from './api/data';
 import { motion } from 'framer-motion';
+import { BrowserRouter } from 'react-router-dom';
+import { About } from './pages/about';
+import { Portfolio } from './pages/portfolio';
+import { Contact } from './pages/contact';
 
 interface StyledBurgerMenuProps {
   open?: boolean;
   hidden?: boolean;
 }
-
-const StyledAppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 ${APP_PADDING};
-  @media (max-width: 812px) {
-    padding: 0 20px;
-  }
-`;
-
-const StyledNavLogoContainer = styled.div``;
-
-const StyledNavLogo = styled.h1`
-  font-family: ${FONTS.vazirmatn};
-  font-size: 28px;
-  font-weight: bold;
-  text-decoration: none;
-  margin: 0;
-`;
-
-const StyledNavLinksContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
-
-const StyledNavLink = styled(Link)`
-  font-size: 14px;
-  color: ${COLORS.navy};
-  text-decoration: none;
-  padding: 0 12px;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 const StyledDesktopNav = styled.div`
   display: flex;
   top: 0;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: calc(1210px + (${APP_PADDING} * 3));
   @media (max-width: 812px) {
     display: none;
   }
 `;
 
+const StyledNavLogoContainer = styled.div`
+  position: relative;
+  margin: 16px ${DESKTOP_PADDING};
+`;
+
+const StyledNavLogoLink = styled.a`
+  font-family: ${FONTS.questrial};
+  font-size: 24px;
+  color: ${COMMON.subtitleColor};
+  font-weight: 700;
+  text-decoration: none;
+`;
+
+const StyledNavLinksContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px ${DESKTOP_PADDING};
+`;
+
+const StyledNavLink = styled.a`
+  font-family: ${FONTS.questrial};
+  font-size: 24px;
+  color: ${COMMON.titleColor};
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0 12px;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
 const StyledMobileNav = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: flex-end;
   top: 0;
   position: absolute;
   right: 0;
-  @media (min-width: 811px) {
+  @media (min-width: 812px) {
     display: none;
   }
+`;
+
+const StyledLogoImg = styled.img`
+  width: 40px;
+  height: 40px;
 `;
 
 const StyledBurgerMenuContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 24px 36px;
 `;
 
 const StyledMobileMenu = styled(motion.div)`
@@ -101,13 +101,18 @@ const StyledMobileMenuLinks = styled.div`
   align-items: center;
 `;
 
-const StyledMobileNavLink = styled.a`
+const StyledMobileNavLink = styled.button`
+  appearance: none;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
   font-size: 24px;
-  color: ${COLORS.navy};
+  color: ${COMMON.titleColor};
   text-decoration: none;
   padding: 12px;
   &:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
 
@@ -131,7 +136,7 @@ const StyledBurgerMenu = styled.button<StyledBurgerMenuProps>`
 const StyledBurgerLines = styled.div<StyledBurgerMenuProps>`
   width: 30px;
   height: 3px;
-  background: ${COLORS.navy};
+  background: ${COMMON.titleColor};
   border-radius: 10px;
   transition: all 0.3s linear;
   position: relative;
@@ -152,22 +157,38 @@ const StyledBurgerLines = styled.div<StyledBurgerMenuProps>`
 
 export const App: React.FC = () => {
   const [navigationMenuOpen, openNavigationMenu] = React.useState(false);
+  const homeRef = React.useRef<HTMLDivElement>(null);
+  const aboutRef = React.useRef<HTMLDivElement>(null);
+  const portfolioRef = React.useRef<HTMLDivElement>(null);
+  const contactRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
+    openNavigationMenu(false);
+    if (ref?.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <BrowserRouter>
-      <StyledAppContainer>
+      <>
         {/* Desktop Nav */}
         <StyledDesktopNav>
           <StyledNavLogoContainer>
-            <StyledNavLink to="/">
-              <StyledNavLogo>
-                <FontAwesomeIcon icon={faCode} color={COMMON.primary} />
-              </StyledNavLogo>
-            </StyledNavLink>
+            <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
+              <StyledLogoImg src="/images/Rounded.png" />
+            </StyledNavLogoLink>
           </StyledNavLogoContainer>
           <StyledNavLinksContainer>
-            <StyledNavLink to="/about">About</StyledNavLink>
-            <StyledNavLink to="/portfolio">Portfolio</StyledNavLink>
-            <StyledNavLink to="/contact">Contact</StyledNavLink>
+            <StyledNavLink onClick={() => scrollTo(aboutRef)}>
+              {navigation.about}
+            </StyledNavLink>
+            <StyledNavLink onClick={() => scrollTo(portfolioRef)}>
+              {navigation.portfolio}
+            </StyledNavLink>
+            <StyledNavLink onClick={() => scrollTo(contactRef)}>
+              {navigation.contact}
+            </StyledNavLink>
           </StyledNavLinksContainer>
         </StyledDesktopNav>
         {/* Mobile Nav */}
@@ -184,7 +205,6 @@ export const App: React.FC = () => {
           </StyledBurgerMenuContainer>
           {navigationMenuOpen && (
             <StyledMobileMenu
-              id="mobile-navigation-menu"
               initial={{
                 borderRadius: '100%',
                 clipPath: 'circle(50% at 50% 50%)',
@@ -216,26 +236,38 @@ export const App: React.FC = () => {
                 }}
               >
                 <StyledMobileMenuLinks>
-                  <StyledMobileNavLink href="/">Home</StyledMobileNavLink>
-                  <StyledMobileNavLink href="/about">About</StyledMobileNavLink>
-                  <StyledMobileNavLink href="/portfolio">
-                    Portfolio
+                  <StyledNavLogoContainer>
+                    <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
+                      <StyledLogoImg src="/images/Rounded.png" />
+                    </StyledNavLogoLink>
+                  </StyledNavLogoContainer>
+                  <StyledMobileNavLink onClick={() => scrollTo(aboutRef)}>
+                    {navigation.about}
                   </StyledMobileNavLink>
-                  <StyledMobileNavLink href="/contact">
-                    Contact
+                  <StyledMobileNavLink onClick={() => scrollTo(portfolioRef)}>
+                    {navigation.portfolio}
+                  </StyledMobileNavLink>
+                  <StyledMobileNavLink onClick={() => scrollTo(contactRef)}>
+                    {navigation.contact}
                   </StyledMobileNavLink>
                 </StyledMobileMenuLinks>
               </motion.div>
             </StyledMobileMenu>
           )}
         </StyledMobileNav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </StyledAppContainer>
+        <div ref={homeRef}>
+          <Home />
+        </div>
+        <div ref={aboutRef}>
+          <About />
+        </div>
+        <div ref={portfolioRef}>
+          <Portfolio />
+        </div>
+        <div ref={contactRef}>
+          <Contact />
+        </div>
+      </>
     </BrowserRouter>
   );
 };

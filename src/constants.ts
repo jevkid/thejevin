@@ -1,19 +1,15 @@
-export const APP_PADDING = '116px';
+export const DESKTOP_PADDING = '100px';
+export const BORDER_RADIUS = '6px';
 
 export const COLORS = {
-  offWhite: '#F9F4EF',
-  navy: '#011B68',
-  orange: '#FF9367',
-  pink: '#F4A8FF',
-  // new
-  nude: '#F1E5E4',
-  blue: '#7C99FD',
-  neon: '#FF6B34',
-  turquoise: '#1EC4CA'
+  black: '#000000',
+  white: '#ffffff',
+  offWhite: '#FDFDF5',
 };
 
 export const FONTS = {
   inconsolata: 'Inconsolata', // 300;400;700
+  josefin: 'Josefin Sans', // 100, 200, 300, 400, 600, 700
   manrope: 'Manrope', // 300;400;600
   notoSansJP: 'Noto Sans JP', // 300;400;700
   questrial: 'Questrial',
@@ -22,11 +18,42 @@ export const FONTS = {
   vast: 'Vast Shadow',
 }
 
+// Color Palettes
+export const darkFloral = {
+  oldLavender: '#6D6875',
+  englishLavender: '#B5838D',
+  pastelPink: '#E5989B',
+  melon: '#FFB4A2',
+  apricot: '#FFCDB2',
+  offWhite: '#FFFBF9'
+};
+
+export const seaScape = {
+  richBlack: '#01161E',
+  midnightGreen: '#124559',
+  tealBlue: '#598392',
+  cambridgeBlue: '#AEC3B0',
+  beige: '#EFF6E0',
+  offWhite: '#FFFBF9'
+};
+
+export const lateJuly = {
+  oxfordBlue: '#031D44',
+  prussianBlue: '#04395E',
+  polishedPine: '#70A288',
+  burlyWood: '#DAB785',
+  copperCrayola: '#D5896F',
+  offWhite: '#FFFBF9'
+};
+
 export const COMMON = {
-  background: COLORS.offWhite,
-  primary: COLORS.navy,
-  secondary: COLORS.orange,
-  tertiary: COLORS.pink,
-  title: FONTS.manrope,
-  body: FONTS.questrial
+  background: seaScape.midnightGreen,
+  primary: '',
+  secondary: '',
+  bodyColor: darkFloral.offWhite,
+  titleColor: darkFloral.pastelPink,
+  subtitleColor: darkFloral.melon,
+  linkColor: darkFloral.pastelPink,
+  titleFont: FONTS.josefin,
+  bodyFont: FONTS.questrial
 };
