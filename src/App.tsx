@@ -73,12 +73,6 @@ const StyledLogoImg = styled.img`
   height: 40px;
 `;
 
-const StyledLogo = styled.h3`
-  margin: 0;
-  padding: 0;
-  position: absolute;
-`;
-
 const StyledBurgerMenuContainer = styled.div`
   display: flex;
   align-items: center;
