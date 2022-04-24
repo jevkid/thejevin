@@ -15,8 +15,9 @@ const StyledCards = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 75%;
-  @media (max-width: 812px) {
+  @media (max-width: 830px) {
     justify-content: center;
+    width: 100%;
   }
 `;
 
