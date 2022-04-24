@@ -1,12 +1,12 @@
 import styled from 'styled-components/macro';
-import { BORDER_RADIUS, COLORS, COMMON, FONTS } from '../constants';
+import { BORDER_RADIUS, COLORS, COMMON, DESKTOP_PADDING, FONTS } from '../constants';
 
 export const StyledPage = styled.div<{ centered?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: ${({ centered }) => centered ? 'center' : 'flex-start'};
-  min-height: ${({ centered }) => centered ? '768px' : '768px'};
+  min-height: 885px;
   ${({ centered }) => centered ? `
     height: 100%;
   ` : ''};
@@ -15,39 +15,27 @@ export const StyledPage = styled.div<{ centered?: boolean }>`
   }
 `;
 
-export const StyledBGPage = styled.div<{ backgroundImg?: string; }>`
-  display: flex;
-  flex-direction: column;
-  @media (min-width: 812px) {
-    background-image: ${({ backgroundImg }) => backgroundImg ? `url(${backgroundImg})` : ''};
-    /* Full height */
-    min-height: auto;
-    position: relative;
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-`;
-
 export const StyledPageContent = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: fit-content;
-  align-items: center;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  margin: 0 ${DESKTOP_PADDING};
+  margin-bottom: 36px;
+  width: 100%;
   @media (max-width: 812px) {
+    align-items: center;
+    margin: 0 16px;
+    text-align: center;
     width: 100%;
+    margin-top: 100px;
   }
 `;
 
-export const StyledBorder = styled.hr`
-  border-bottom: 0.5px solid #000000;
-  width: 100%;
-  border-style: solid;
-  color: black;
+export const StyledBorder = styled.div`
+  border-bottom: 1px solid ${COMMON.subtitleColor};
+  width: 75%;
+  margin-bottom: 12px;
+  color: ${COMMON.subtitleColor};
   @media (max-width: 812px) {
     width: 85%;
   }
@@ -62,10 +50,10 @@ export const shiny = `
 
   &:hover {
     cursor: pointer;
-    background: ${COLORS.black};
-    color: ${COMMON.background};
+    background: ${COMMON.subtitleColor};
+    color: ${COLORS.offWhite};
     a {
-      color: ${COMMON.background};
+      color: ${COLORS.offWhite};
     }
   }
 
@@ -96,7 +84,7 @@ export const StyledPageTitleContainer = styled.div`
 `;
 
 export const StyledPageTitle = styled.h2`
-  color: ${COLORS.black};
+  color: ${COMMON.titleColor};
   font-family: ${FONTS.questrial};
   font-weight: 700;
   font-size: 64px;
@@ -107,35 +95,40 @@ export const StyledPageTitle = styled.h2`
 `;
 
 export const StyledPageSubtitle = styled.h4`
-  color: ${COLORS.black};
+  color: ${COMMON.subtitleColor};
   font-family: ${FONTS.manrope};
   font-weight: 400;
+  width: 75%;
   font-size: 24px;
   margin: 0;
 `;
 
-export const StyledNavigationContainer = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: baseline;
-`;
-
-export const StyledSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 36px 0;
-`;
-
-export const StyledSectionTitle = styled.h3`
-  color: ${COLORS.black};
-  font-family: ${FONTS.vazirmatn};
-  font-weight: bold;
-  svg {
-    margin-right: 12px;
-  }
-`;
-
-export const StyledP = styled.p`
-  color: ${COLORS.black};
+export const StyledP = styled.p<{ fullWidth?: boolean }>`
+  color: ${COMMON.bodyColor};
   font-size: 18px;
+  width: ${({ fullWidth }) => fullWidth ? '100%' : '75%'};
+`;
+
+export const StyledList = styled.ul`
+  padding-left: 14px;
+  width: 75%;
+  margin-top: 0px;
+  text-align: left;
+`;
+
+export const StyledListItem = styled.li`
+  margin: 8px 0;
+  font-size: 16px;
+  color: ${COMMON.bodyColor}
+`;
+
+export const StyledLink = styled.a`
+  font-size: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  color: ${COMMON.linkColor};
+  &:hover {
+    color: ${COMMON.subtitleColor};
+    text-decoration: underline;
+  }
 `;

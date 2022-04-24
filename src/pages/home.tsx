@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { home } from '../api/data';
 import { ButtonAsLink } from '../components/buttons';
-import { COLORS, DESKTOP_PADDING, FONTS } from '../constants';
+import { COMMON, DESKTOP_PADDING, FONTS } from '../constants';
 import { StyledPage } from './styles';
 
 const StyledHomeContainer = styled.div`
@@ -20,7 +20,7 @@ const StyledHomeContainer = styled.div`
 
 const StyledHeadingTitle = styled(motion.h1)`
   font-size: 100px;
-  color: ${COLORS.black};
+  color: ${COMMON.titleColor};
   font-family: ${FONTS.questrial};
   font-weight: 700;
   margin: 12px 0;
@@ -30,14 +30,18 @@ const StyledHeadingTitle = styled(motion.h1)`
 `;
 
 const StyledHeadingSubtitle = styled(motion.h2)`
-  color: ${COLORS.black};
-  font-family: ${FONTS.manrope};
-  font-weight: 400;
+  color: ${COMMON.subtitleColor};
+  font-family: ${FONTS.questrial};
+  font-weight: 700;
+  font-size: 52px;
   margin: 0;
+  @media (max-width: 812px) {
+    font-size: 32px;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
-  margin: 18px 0;
+  margin: 48px 0;
 `;
 
 export const Home: React.FC = () => {

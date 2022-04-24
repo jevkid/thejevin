@@ -13,33 +13,13 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  background-color: #f3f4f2;
+  background-color: #124559;
   transition: background-color 1s ease;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body.color-home {
-  background-color: #f3f4f2;
-}
-
-body.color-about {
-  background-color: #ccd1c1;
-}
-
-body.color-skills {
-  background-color: #b2b7a5;
-}
-
-body.color-portfolio {
-  background-color: #99a08a;
-}
-
-body.color-contact {
-  background-color: #858c74;
 }
 
 code {
