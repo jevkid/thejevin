@@ -1,14 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { DESKTOP_PADDING, COLORS, FONTS, BORDER_RADIUS } from '../constants';
-import { Home } from './home';
-import { navigation } from '../api/data';
+import { DESKTOP_PADDING, FONTS, COMMON } from './constants';
+import { Home } from './pages/home';
+import { navigation } from './api/data';
 import { motion } from 'framer-motion';
 import { BrowserRouter } from 'react-router-dom';
-import { About } from './about';
-import { Portfolio } from './portfolio';
-import { Contact } from './contact';
-import { shiny } from './styles';
+import { About } from './pages/about';
+import { Portfolio } from './pages/portfolio';
+import { Contact } from './pages/contact';
 
 interface StyledBurgerMenuProps {
   open?: boolean;
@@ -26,22 +25,14 @@ const StyledDesktopNav = styled.div`
 `;
 
 const StyledNavLogoContainer = styled.div`
-  width: 38px;
-  height: 30px;
-  padding: 4px;
-  border: 2px solid ${COLORS.black};
-  border-radius: ${BORDER_RADIUS};
   position: relative;
   margin: 16px ${DESKTOP_PADDING};
-  background: ${COLORS.white};
-  color: ${COLORS.black};
-  ${shiny};
 `;
 
 const StyledNavLogoLink = styled.a`
   font-family: ${FONTS.questrial};
   font-size: 24px;
-  color: ${COLORS.black};
+  color: ${COMMON.subtitleColor};
   font-weight: 700;
   text-decoration: none;
 `;
@@ -55,7 +46,7 @@ const StyledNavLinksContainer = styled.div`
 const StyledNavLink = styled.a`
   font-family: ${FONTS.questrial};
   font-size: 24px;
-  color: ${COLORS.black};
+  color: ${COMMON.titleColor};
   font-weight: 700;
   text-decoration: none;
   padding: 0 12px;
@@ -75,6 +66,11 @@ const StyledMobileNav = styled.div`
   @media (min-width: 812px) {
     display: none;
   }
+`;
+
+const StyledLogoImg = styled.img`
+  width: 40px;
+  height: 40px;
 `;
 
 const StyledLogo = styled.h3`
@@ -117,7 +113,7 @@ const StyledMobileNavLink = styled.button`
   box-shadow: none;
   background: transparent;
   font-size: 24px;
-  color: ${COLORS.black};
+  color: ${COMMON.titleColor};
   text-decoration: none;
   padding: 12px;
   &:hover {
@@ -146,7 +142,7 @@ const StyledBurgerMenu = styled.button<StyledBurgerMenuProps>`
 const StyledBurgerLines = styled.div<StyledBurgerMenuProps>`
   width: 30px;
   height: 3px;
-  background: ${COLORS.black};
+  background: ${COMMON.titleColor};
   border-radius: 10px;
   transition: all 0.3s linear;
   position: relative;
@@ -186,7 +182,7 @@ export const App: React.FC = () => {
         <StyledDesktopNav>
           <StyledNavLogoContainer>
             <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
-              <StyledLogo>{navigation.logo}</StyledLogo>
+              <StyledLogoImg src="/images/Rounded.png" />
             </StyledNavLogoLink>
           </StyledNavLogoContainer>
           <StyledNavLinksContainer>

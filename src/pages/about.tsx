@@ -1,59 +1,35 @@
 import * as React from 'react';
 import { about } from '../api/data';
-import styled from 'styled-components/macro';
+import { Accordion } from '../components/accordion';
 import {
   StyledBorder,
+  StyledPageContent,
   StyledP,
   StyledPage,
   StyledPageSubtitle,
   StyledPageTitle,
   StyledPageTitleContainer,
+  StyledList,
+  StyledListItem,
+  StyledLink,
 } from './styles';
-import { DESKTOP_PADDING } from '../constants';
-import { Accordion } from '../components/accordion';
-
-const StyledAboutContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 ${DESKTOP_PADDING};
-  width: 85%;
-  @media (max-width: 812px) {
-    align-items: center;
-    margin: 0 16px;
-    text-align: center;
-    width: 100%;
-    margin-top: 100px;
-  }
-`;
-
-const StyledList = styled.ul`
-  padding-left: 14px;
-  margin-top: 0px;
-  text-align: left;
-`;
-
-const StyledListItem = styled.li`
-  margin: 8px 0;
-  font-size: 16px;
-`;
 
 export const About: React.FC = () => {
   return (
     <StyledPage id="about" className="page">
-      <StyledAboutContainer>
+      <StyledPageContent>
         <StyledPageTitleContainer>
           <StyledPageTitle>{about.title}</StyledPageTitle>
           <StyledBorder />
           <StyledPageSubtitle>
             Hello! I'm Megan, a Cardiff based Team Lead/Frontend Engineer at{' '}
-            <a
+            <StyledLink
               href="https://www.crowdcube.com"
               target="_blank"
               rel="noreferrer"
             >
               Crowdcube
-            </a>
+            </StyledLink>
             .
           </StyledPageSubtitle>
           <StyledP>
@@ -85,18 +61,18 @@ export const About: React.FC = () => {
             <StyledListItem>
               I love to travel, but equally I love photographing my travels. I
               try to keep my{' '}
-              <a
+              <StyledLink
                 href="https://www.flickr.com/photos/nashwales/albums"
                 target="_blank"
                 rel="noreferrer"
               >
                 Flickr
-              </a>{' '}
+              </StyledLink>{' '}
               up to date as I go!
             </StyledListItem>
           </StyledList>
           <Accordion title="Prologue">
-            <StyledP>
+            <StyledP fullWidth={true}>
               I've been designing and programming websites since the MySpace
               era... or at least, that's what got me started. I actually started
               university studying a very generic "Communications" degree- I
@@ -115,7 +91,7 @@ export const About: React.FC = () => {
             </StyledP>
           </Accordion>
           <Accordion title="University days">
-            <StyledP>
+            <StyledP fullWidth={true}>
               During my 3 years at Cardiff University (where I studied Computer
               Science and Software Engineering), I learned the basics of various
               programming languages such as Java, Python, C/C++, etc. I also
@@ -128,33 +104,33 @@ export const About: React.FC = () => {
               much about leadership, organisation, and working closely people of
               all different backgrounds.
             </StyledP>
-            <StyledP>
+            <StyledP fullWidth={true}>
               The summer following my second year, I was lucky enough to
               complete a internship for{' '}
-              <a
+              <StyledLink
                 href="https://www.skyscanner.net"
                 target="_blank"
                 rel="noreferrer"
               >
                 Skyscanner
-              </a>{' '}
+              </StyledLink>{' '}
               in Barcelona. I worked within their Data Squad and built internal
               dashboards monitoring automated processes such as hotel
               deduplication. This experience in the travel industry is what
               actually what helped me land my first job as a Junior Frontend
               Developer at{' '}
-              <a
+              <StyledLink
                 href="https://www.inspiretec.com"
                 target="_blank"
                 rel="noreferrer"
               >
                 Inspiretec
-              </a>
+              </StyledLink>
               .
             </StyledP>
           </Accordion>
           <Accordion title="Professional experience">
-            <StyledP>
+            <StyledP fullWidth={true}>
               During my time at Inspiretec, I worked primarily on a white-label
               travel booking solution used by various financial institutions in
               Canada. This software integrated with the company's platform to
@@ -163,7 +139,7 @@ export const About: React.FC = () => {
               this, I worked on an in-house CMS system and also built email
               templates for various clients.
             </StyledP>
-            <StyledP>
+            <StyledP fullWidth={true}>
               After Inspiretec I did a short stint at Cardiff University, where
               I developed their Student App- an app for students to check their
               timetable, get directions, view upcoming events, and more. I was
@@ -175,7 +151,7 @@ export const About: React.FC = () => {
               my own time. It took some time, but eventually the department went
               for my React Native implementation which is still in use today.
             </StyledP>
-            <StyledP>
+            <StyledP fullWidth={true}>
               In my current position at Crowdcube, I lead a team of engineers
               and help manage the day to day of a squad as well. We work
               primarily on live investment opportunities, and have recently
@@ -187,17 +163,17 @@ export const About: React.FC = () => {
               and progress in their career. It gives me great pleasure to be a
               part of such a happy, high functioning team.
             </StyledP>
-            <StyledP>
+            <StyledP fullWidth={true}>
               I'm very active in the dev community, both locally and nationally.
               I've been volunteering in classrooms, at hackathons, and virtual
               events since I was in university. I co-host a local meetup,{' '}
-              <a
+              <StyledLink
                 href="https://www.meetup.com/uxwales/"
                 target="_blank"
                 rel="noreferrer"
               >
                 UX Wales
-              </a>
+              </StyledLink>
               , and enjoy volunteering at events held by organisations such as
               the Stemettes, or any opportunity to help young women learn to
               code. I just love teaching others and seeing them realise what
@@ -205,7 +181,7 @@ export const About: React.FC = () => {
             </StyledP>
           </Accordion>
         </StyledPageTitleContainer>
-      </StyledAboutContainer>
+      </StyledPageContent>
     </StyledPage>
   );
 };

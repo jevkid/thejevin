@@ -7,29 +7,16 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { COLORS, DESKTOP_PADDING } from '../constants';
+import { COMMON } from '../constants';
 import {
   shiny,
   StyledBorder,
+  StyledPageContent,
   StyledPage,
   StyledPageSubtitle,
   StyledPageTitle,
   StyledPageTitleContainer,
 } from './styles';
-
-const StyledContactContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 ${DESKTOP_PADDING};
-  @media (max-width: 812px) {
-    align-items: center;
-    margin: 0 16px;
-    width: 100%;
-    text-align: center;
-    margin-top: 100px;
-  }
-`;
 
 const StyledIconsContainer = styled.div`
   display: flex;
@@ -43,8 +30,6 @@ const StyledIconsContainer = styled.div`
   }
 `;
 
-const StyledIconContainer = styled.div``;
-
 const StyledIconLink = styled.a`
   svg {
     ${shiny};
@@ -54,9 +39,9 @@ const StyledIconLink = styled.a`
 export const Contact: React.FC = () => {
   return (
     <StyledPage id="contact" className="page">
-      <StyledContactContainer>
+      <StyledPageContent>
         <StyledPageTitleContainer>
-          <StyledPageTitle>Contact</StyledPageTitle>
+          <StyledPageTitle>Contact me</StyledPageTitle>
         </StyledPageTitleContainer>
         <StyledBorder />
         <StyledPageSubtitle>
@@ -64,56 +49,55 @@ export const Contact: React.FC = () => {
           touch!
         </StyledPageSubtitle>
         <StyledIconsContainer>
-          <StyledIconContainer>
-            <StyledIconLink
-              href="https://www.linkedin.com/in/megan-jevin-51b76254/"
-              target="_blank"
-              title="LinkedIn"
-            >
-              <FontAwesomeIcon
-                icon={faLinkedinIn}
-                size="3x"
-                color={COLORS.black}
-              />
-            </StyledIconLink>
-          </StyledIconContainer>
-          <StyledIconContainer>
-            <StyledIconLink
-              href="https://github.com/jevkid"
-              target="_blank"
-              title="Github"
-            >
-              <FontAwesomeIcon icon={faGithub} size="3x" color={COLORS.black} />
-            </StyledIconLink>
-          </StyledIconContainer>
-          <StyledIconContainer>
-            <StyledIconLink
-              href="https://www.instagram.com/megzdelight"
-              target="_blank"
-              title="Instagram"
-            >
-              <FontAwesomeIcon
-                icon={faInstagram}
-                size="3x"
-                color={COLORS.black}
-              />
-            </StyledIconLink>
-          </StyledIconContainer>
-          <StyledIconContainer>
-            <StyledIconLink
-              href="mailto:jevinme@gmail.com"
-              target="_blank"
-              title="Email"
-            >
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                size="3x"
-                color={COLORS.black}
-              />
-            </StyledIconLink>
-          </StyledIconContainer>
+          <StyledIconLink
+            href="https://www.linkedin.com/in/megan-jevin-51b76254/"
+            target="_blank"
+            title="LinkedIn"
+          >
+            <FontAwesomeIcon
+              icon={faLinkedinIn}
+              size="3x"
+              color={COMMON.linkColor}
+            />
+          </StyledIconLink>
+
+          <StyledIconLink
+            href="https://github.com/jevkid"
+            target="_blank"
+            title="Github"
+          >
+            <FontAwesomeIcon
+              icon={faGithub}
+              size="3x"
+              color={COMMON.linkColor}
+            />
+          </StyledIconLink>
+
+          <StyledIconLink
+            href="https://www.instagram.com/megzdelight"
+            target="_blank"
+            title="Instagram"
+          >
+            <FontAwesomeIcon
+              icon={faInstagram}
+              size="3x"
+              color={COMMON.linkColor}
+            />
+          </StyledIconLink>
+
+          <StyledIconLink
+            href="mailto:jevinme@gmail.com"
+            target="_blank"
+            title="Email"
+          >
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              size="3x"
+              color={COMMON.linkColor}
+            />
+          </StyledIconLink>
         </StyledIconsContainer>
-      </StyledContactContainer>
+      </StyledPageContent>
     </StyledPage>
   );
 };

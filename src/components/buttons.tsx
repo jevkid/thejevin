@@ -14,15 +14,15 @@ interface ButtonProps
 }
 
 const StyledButton = styled.button`
-  border: 2px solid ${COLORS.black};
-  background: ${COLORS.white};
-  color: ${COLORS.black};
+  border: 2px solid ${COMMON.subtitleColor};
+  background: transparent;
+  color: ${COMMON.subtitleColor};
   border-radius: ${BORDER_RADIUS};
   padding: 12px;
   &:hover {
     cursor: pointer;
-    background: ${COLORS.black};
-    color: ${COMMON.background};
+    background: ${COMMON.subtitleColor};
+    color: ${COLORS.offWhite};
   }
 `;
 
@@ -53,25 +53,20 @@ interface ButtonAsLinkProps
   href: string;
 }
 
-const StyledButtonContainer = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-`;
-
 const StyledButtonAsLink = styled.a`
   text-decoration: none;
-  border: 2px solid ${COLORS.black};
-  background: ${COLORS.white};
-  color: ${COLORS.black};
+  border: 2px solid ${COMMON.subtitleColor};
+  background: transparent;
+  color: ${COMMON.subtitleColor};
+  font-size: 20px;
+  font-weight: 600;
   ${shiny}
 `;
 
 export const ButtonAsLink: React.FC<ButtonAsLinkProps> = (props) => {
   return (
-    <StyledButtonContainer>
-      <StyledButtonAsLink href={props.href} target="_blank">
-        {props.children}
-      </StyledButtonAsLink>
-    </StyledButtonContainer>
+    <StyledButtonAsLink href={props.href} target="_blank">
+      {props.children}
+    </StyledButtonAsLink>
   );
 };
