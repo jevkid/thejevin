@@ -244,7 +244,7 @@ export const App: React.FC = () => {
                 <StyledMobileMenuLinks>
                   <StyledNavLogoContainer>
                     <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
-                      <StyledLogo>{navigation.logo}</StyledLogo>
+                      <StyledLogoImg src="/images/Rounded.png" />
                     </StyledNavLogoLink>
                   </StyledNavLogoContainer>
                   <StyledMobileNavLink onClick={() => scrollTo(aboutRef)}>

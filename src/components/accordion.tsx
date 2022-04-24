@@ -36,6 +36,7 @@ const StyledArrow = styled.i<{ direction: 'up' | 'down' }>`
   padding: 3px;
   height: 5px;
   width: 5px;
+  transition: 0.5s;
   ${({ direction }) =>
     direction === 'up' &&
     `
