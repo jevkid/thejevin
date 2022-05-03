@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
+import { trackEvent } from '../analytics/trackEvent';
 import { COMMON } from '../constants';
 
 const StyledAccordionContainer = styled.div`
@@ -81,9 +82,24 @@ const tagVariants = {
 
 export const Accordion: React.FC<AccordionProps> = (props) => {
   const [contentShown, setContentShown] = React.useState<boolean>(false);
+
+  const handleToggle = (isOpen: boolean) => {
+    if (isOpen) {
+      trackEvent({
+        category: 'Accordion toggled',
+        action: `${props.title} opened`,
+      });
+    }
+  };
+
   return (
     <StyledAccordionContainer>
-      <StyledAccordionTitle onClick={() => setContentShown(!contentShown)}>
+      <StyledAccordionTitle
+        onClick={() => {
+          handleToggle(contentShown);
+          setContentShown(!contentShown);
+        }}
+      >
         {props.title}{' '}
         <motion.div>
           <StyledArrow direction={contentShown ? 'up' : 'down'}></StyledArrow>

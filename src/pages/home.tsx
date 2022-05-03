@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import { trackEvent } from '../analytics/trackEvent';
 import { home } from '../api/data';
 import { ButtonAsLink } from '../components/buttons';
 import { COMMON, DESKTOP_PADDING, FONTS } from '../constants';
@@ -66,7 +67,17 @@ export const Home: React.FC = () => {
             {home.subtitle}
           </StyledHeadingSubtitle>
           <StyledButtonContainer>
-            <ButtonAsLink href={home.connectLink}>{home.connect}</ButtonAsLink>
+            <ButtonAsLink
+              href={home.connectLink}
+              onClick={() => {
+                trackEvent({
+                  category: 'External link clicked',
+                  action: 'Linkedin link clicked',
+                });
+              }}
+            >
+              {home.connect}
+            </ButtonAsLink>
           </StyledButtonContainer>
         </AnimatePresence>
       </StyledHomeContainer>

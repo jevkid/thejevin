@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import { trackEvent } from '../analytics/trackEvent';
 import { BORDER_RADIUS, COLORS, COMMON } from '../constants';
 import { StyledLink } from '../pages/styles';
 
@@ -60,7 +61,13 @@ export const RoundedCard: React.FC<FlatCardProps> = (props) => {
 
   return (
     <StyledFlatCard
-      onMouseEnter={() => setShowDescription(true)}
+      onMouseEnter={() => {
+        setShowDescription(true);
+        trackEvent({
+          category: 'Portfolio card interaction',
+          action: `${props.subtitle} card hovered`,
+        });
+      }}
       onMouseLeave={() => setShowDescription(false)}
     >
       {showDescription ? (
@@ -72,7 +79,16 @@ export const RoundedCard: React.FC<FlatCardProps> = (props) => {
             exit={{ y: 30 }}
           >
             <StyledTitle>{props.subtitle}</StyledTitle>
-            <StyledLink href={props.href} target="_blank">
+            <StyledLink
+              href={props.href}
+              target="_blank"
+              onClick={() => {
+                trackEvent({
+                  category: 'External link clicked',
+                  action: `${props.subtitle} link clicked`,
+                });
+              }}
+            >
               {props.href.split('www.')[1]}
             </StyledLink>
           </StyledTitleContainer>

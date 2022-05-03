@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { trackEvent } from '../analytics/trackEvent';
 import { about } from '../api/data';
 import { Accordion } from '../components/accordion';
 import {
@@ -28,6 +29,12 @@ export const About: React.FC = () => {
               href="https://www.crowdcube.com"
               target="_blank"
               rel="noreferrer"
+              onClick={() => {
+                trackEvent({
+                  category: 'External link clicked',
+                  action: 'Crowdcube link clicked',
+                });
+              }}
             >
               Crowdcube
             </StyledLink>
@@ -66,6 +73,12 @@ export const About: React.FC = () => {
                 href="https://www.flickr.com/photos/nashwales/albums"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  trackEvent({
+                    category: 'External link clicked',
+                    action: 'Flickr link clicked',
+                  });
+                }}
               >
                 Flickr
               </StyledLink>{' '}
@@ -111,6 +124,12 @@ export const About: React.FC = () => {
                 href="https://www.skyscanner.net"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  trackEvent({
+                    category: 'External link clicked',
+                    action: 'Skyscanner link clicked',
+                  });
+                }}
               >
                 Skyscanner
               </StyledLink>
@@ -123,6 +142,12 @@ export const About: React.FC = () => {
                 href="https://www.inspiretec.com"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  trackEvent({
+                    category: 'External link clicked',
+                    action: 'Inspiretec link clicked',
+                  });
+                }}
               >
                 Inspiretec
               </StyledLink>
@@ -175,6 +200,12 @@ export const About: React.FC = () => {
                 href="https://www.meetup.com/uxwales/"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  trackEvent({
+                    category: 'External link clicked',
+                    action: 'UX Wales link clicked',
+                  });
+                }}
               >
                 UX Wales
               </StyledLink>

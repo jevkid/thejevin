@@ -4,15 +4,19 @@ import { DESKTOP_PADDING, FONTS, COMMON } from './constants';
 import { Home } from './pages/home';
 import { navigation } from './api/data';
 import { motion } from 'framer-motion';
-import { BrowserRouter } from 'react-router-dom';
 import { About } from './pages/about';
 import { Portfolio } from './pages/portfolio';
 import { Contact } from './pages/contact';
+import { Wrapper } from './components/gaWrapper';
+import { useAnalytics } from './analytics/useAnalytics';
+import { BrowserRouter } from 'react-router-dom';
+import { trackEvent } from './analytics/trackEvent';
 
 interface StyledBurgerMenuProps {
   open?: boolean;
   hidden?: boolean;
 }
+
 const StyledDesktopNav = styled.div`
   display: flex;
   top: 0;
@@ -161,6 +165,23 @@ export const App: React.FC = () => {
   const aboutRef = React.useRef<HTMLDivElement>(null);
   const portfolioRef = React.useRef<HTMLDivElement>(null);
   const contactRef = React.useRef<HTMLDivElement>(null);
+  const initialised = useAnalytics();
+
+  const handleNavClick = (
+    isMobile: boolean,
+    title: string,
+    ref?: React.RefObject<HTMLDivElement>
+  ) => {
+    trackEvent({
+      category: 'Internal link clicked',
+      action: `${
+        isMobile ? 'Mobile' : 'Desktop'
+      } navigation "${title}" clicked`,
+    });
+    if (ref) {
+      scrollTo(ref);
+    }
+  };
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
     openNavigationMenu(false);
@@ -171,22 +192,30 @@ export const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <>
+      <Wrapper initialised={initialised}>
         {/* Desktop Nav */}
         <StyledDesktopNav>
           <StyledNavLogoContainer>
-            <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
+            <StyledNavLogoLink
+              onClick={() => handleNavClick(false, 'home', homeRef)}
+            >
               <StyledLogoImg src="/images/Rounded.png" />
             </StyledNavLogoLink>
           </StyledNavLogoContainer>
           <StyledNavLinksContainer>
-            <StyledNavLink onClick={() => scrollTo(aboutRef)}>
+            <StyledNavLink
+              onClick={() => handleNavClick(false, 'about', aboutRef)}
+            >
               {navigation.about}
             </StyledNavLink>
-            <StyledNavLink onClick={() => scrollTo(portfolioRef)}>
+            <StyledNavLink
+              onClick={() => handleNavClick(false, 'portfolio', portfolioRef)}
+            >
               {navigation.portfolio}
             </StyledNavLink>
-            <StyledNavLink onClick={() => scrollTo(contactRef)}>
+            <StyledNavLink
+              onClick={() => handleNavClick(false, 'contact', contactRef)}
+            >
               {navigation.contact}
             </StyledNavLink>
           </StyledNavLinksContainer>
@@ -196,7 +225,10 @@ export const App: React.FC = () => {
           <StyledBurgerMenuContainer>
             <StyledBurgerMenu
               id="burger-menu-toggle"
-              onClick={() => openNavigationMenu(!navigationMenuOpen)}
+              onClick={() => {
+                handleNavClick(true, 'burger');
+                openNavigationMenu(!navigationMenuOpen);
+              }}
             >
               <StyledBurgerLines open={navigationMenuOpen} />
               <StyledBurgerLines open={navigationMenuOpen} />
@@ -237,17 +269,27 @@ export const App: React.FC = () => {
               >
                 <StyledMobileMenuLinks>
                   <StyledNavLogoContainer>
-                    <StyledNavLogoLink onClick={() => scrollTo(homeRef)}>
+                    <StyledNavLogoLink
+                      onClick={() => handleNavClick(true, 'home', homeRef)}
+                    >
                       <StyledLogoImg src="/images/Rounded.png" />
                     </StyledNavLogoLink>
                   </StyledNavLogoContainer>
-                  <StyledMobileNavLink onClick={() => scrollTo(aboutRef)}>
+                  <StyledMobileNavLink
+                    onClick={() => handleNavClick(true, 'about', aboutRef)}
+                  >
                     {navigation.about}
                   </StyledMobileNavLink>
-                  <StyledMobileNavLink onClick={() => scrollTo(portfolioRef)}>
+                  <StyledMobileNavLink
+                    onClick={() =>
+                      handleNavClick(true, 'portfolio', portfolioRef)
+                    }
+                  >
                     {navigation.portfolio}
                   </StyledMobileNavLink>
-                  <StyledMobileNavLink onClick={() => scrollTo(contactRef)}>
+                  <StyledMobileNavLink
+                    onClick={() => handleNavClick(true, 'contact', contactRef)}
+                  >
                     {navigation.contact}
                   </StyledMobileNavLink>
                 </StyledMobileMenuLinks>
@@ -267,7 +309,7 @@ export const App: React.FC = () => {
         <div ref={contactRef}>
           <Contact />
         </div>
-      </>
+      </Wrapper>
     </BrowserRouter>
   );
 };
