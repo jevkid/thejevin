@@ -8,7 +8,7 @@ export const navigation = {
 
 export const home = {
   title: "Megan Jevin",
-  subtitle: "Cardiff based team lead / frontend engineer",
+  subtitle: "Cardiff based engineering manager / frontend engineer",
   connect: "Connect",
   connectLink: "https://www.linkedin.com/in/megan-jevin-51b76254/"
 };

@@ -13,7 +13,7 @@ const StyledAccordionContainer = styled.div`
   }
 `;
 
-const StyledAccordionTitle = styled(motion.div)<{ open?: boolean }>`
+const StyledAccordionTitle = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   font-size: 20px;
@@ -83,10 +83,7 @@ export const Accordion: React.FC<AccordionProps> = (props) => {
   const [contentShown, setContentShown] = React.useState<boolean>(false);
   return (
     <StyledAccordionContainer>
-      <StyledAccordionTitle
-        open={contentShown}
-        onClick={() => setContentShown(!contentShown)}
-      >
+      <StyledAccordionTitle onClick={() => setContentShown(!contentShown)}>
         {props.title}{' '}
         <motion.div>
           <StyledArrow direction={contentShown ? 'up' : 'down'}></StyledArrow>

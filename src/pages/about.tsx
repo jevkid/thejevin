@@ -22,7 +22,8 @@ export const About: React.FC = () => {
           <StyledPageTitle>{about.title}</StyledPageTitle>
           <StyledBorder />
           <StyledPageSubtitle>
-            Hello! I'm Megan, a Cardiff based Team Lead/Frontend Engineer at{' '}
+            Hello! I'm Megan, a Cardiff based Engineering Manager/Frontend
+            Engineer at{' '}
             <StyledLink
               href="https://www.crowdcube.com"
               target="_blank"
@@ -42,8 +43,8 @@ export const About: React.FC = () => {
           <StyledList>
             <StyledListItem>
               I'm a Frontend Engineer specialising in React and Typescript, as
-              well as a Team Lead in charge of line managing a small team of
-              engineers.
+              well as an Engineering Manager in charge of line managing a small
+              team of engineers.
             </StyledListItem>
             <StyledListItem>
               I'm really passionate about trying to close the gender gap in this
